@@ -1,0 +1,43 @@
+.
+├── checkpoints
+├── EjemplosPV-vision
+│   ├── module_imgs
+│   └── raw_img_gray
+├── ImagenesXcap
+│   └── 070A_8v
+├── Test_crack
+├── Test_ImageJ
+│   └── stack_070_edited
+└── TestsPV-vision
+    ├── checkpoints
+    │   ├── epoch_1
+    │   ├── epoch_10
+    │   └── epoch_2
+    ├── examples
+    │   ├── cell_classification
+    │   ├── crack_segmentation
+    │   │   ├── img_for_crack_analysis
+    │   │   ├── img_for_prediction
+    │   │   └── img_label_for_training
+    │   │       ├── testset
+    │   │       │   ├── ann
+    │   │       │   └── img
+    │   │       ├── train
+    │   │       │   ├── ann
+    │   │       │   └── img
+    │   │       └── val
+    │   │           ├── ann
+    │   │           └── img
+    │   ├── object_detection
+    │   │   ├── transformed_img
+    │   │   └── yolo_manual_ann
+    │   └── transform_seg
+    │       ├── field_pipeline
+    │       │   ├── raw_img_gray
+    │       │   ├── raw_img_rgb
+    │       │   └── unet_ann
+    │       └── module_imgs
+    ├── output
+    └── __pycache__
+
+40 directories
