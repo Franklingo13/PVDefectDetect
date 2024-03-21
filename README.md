@@ -55,7 +55,7 @@ Este archivo README proporciona una descripción general de la estructura y el c
 * **EjemplosPV-vision** (Ejemplos PV-Vision): Contiene archivos de ejemplo para probar los tutoriales de Jupyter Notebook relacionados con la visión artificial para paneles solares (PV-Vision).
     * **module_imgs** (Imágenes de Módulo): Contiene imágenes originales de electroluminiscencia (EL) de módulos solares provenientes de campo y laboratorio.
     * **raw_img_gray** (Imágenes Crudas en Escala de Grises):  **(Aclaración necesaria)** Se desconoce el contenido exacto de esta carpeta debido a un Acuerdo de No Divulgación (NDA).
-* **ImagenesXcap** (Imágenes Xcap): Almacena un conjunto de imágenes EL tomadas con una cámara Xcap.
+* **ImagenesXcap** (Imágenes Xcap): Almacena un conjunto de imágenes EL tomadas con una cámara SWIR editadas con XCAP.
     * **070A_8v**: Probablemente, un identificador específico para este conjunto de imágenes.
 * **Test_crack** (Pruebas de Grietas): Contiene 10 imágenes del conjunto de datos que presentan grietas y fracturas en paneles solares.
 * **Test_ImageJ** (Pruebas de ImageJ): Contiene imágenes EL editadas con el software ImageJ.
