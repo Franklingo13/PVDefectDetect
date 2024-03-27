@@ -163,7 +163,9 @@ class Normalize:
 # https://datahub.duramat.org/dataset/00b29daf-239c-47b6-bd96-bfb0875179a8/resource/c6626a05-e82f-4732-ade9-ec5441b83e46/download/crack_segmentation.zip
 
 # Se establece la ruta al directorio raíz que contiene las imágenes y las etiquetas.
-root = Path('/home/franklin/PV_vision/pv-vision/examples/crack_segmentation/img_label_for_training')
+#root = Path('/home/franklin/PV_vision/pv-vision/examples/crack_segmentation/img_label_for_training') # Ubuntu
+
+root = Path('D:\Documentos\PV_Vision\pv-vision\examples\crack_segmentation\img_label_for_training') # Windows
 
 
 # Se definen las transformaciones a aplicar a las imágenes y las etiquetas.
