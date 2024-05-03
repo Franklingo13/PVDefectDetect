@@ -89,3 +89,18 @@ def remove_hot_pixels(image):
     image = cv2.inpaint(image, mask, 2, cv2.INPAINT_TELEA)
 
     return image
+
+def SubtractBG(imageEL, inageBG):
+    """
+    Resta una imagen de fondo a una imagen de EL.
+
+    Parámetros:
+        imageEL: Imagen de EL.
+        imageBG: Imagen de fondo.
+
+    Devuelve:
+        La imagen EL con la imagen de fondo restada.
+    """
+    imageEL = cv2.subtract(imageEL, inageBG)
+
+    return imageEL
