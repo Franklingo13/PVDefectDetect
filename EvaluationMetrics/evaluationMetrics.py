@@ -7,6 +7,15 @@ import cv2
 
 # Función para medir la métrica Contrast en imágenes en escala de grises
 def contrast_metric(image):
+    """
+    Función que calcula el contraste de una imagen en escala de grises.
+
+    Parámetros:
+    image: Imagen en escala de grises.
+
+    Retorna:
+    C: Valor del contraste de la imagen.
+    """
     # Calcular la intensidad media de la imagen
     E = np.mean(image)
 
@@ -24,6 +33,16 @@ def contrast_metric(image):
 
 # Función para medir la métrica contrast Improvement ratio (CIR) en imágenes en escala de grises
 def CIR(original_image, enhanced_image):
+    """
+    Función que calcula el índice de mejora de contraste (CIR) entre dos imágenes en escala de grises.
+
+    Parámetros:
+    original_image: Imagen original en escala de grises.
+    enhanced_image: Imagen mejorada en escala de grises.
+
+    Retorna:
+    CIR: Valor del índice de mejora de contraste.
+    """
     # Calcular el tamaño de la imagen
     M, N = original_image.shape
 
@@ -51,9 +70,18 @@ def CIR(original_image, enhanced_image):
 
 # Función para calcular el PSNR entre las imágenes original y mejorada
 def PSNR(original_image, enhanced_image):
+    """
+    Función que calcula el Pico de la Relación de Señal a Ruido (PSNR) entre dos imágenes en escala de grises.
+
+    Parámetros:
+    original_image: Imagen original en escala de grises.
+    enhanced_image: Imagen mejorada en escala de grises.
+
+    Retorna:
+    psnr: Valor del PSNR entre las dos imágenes.
+    """
     # Calcular el error cuadrático medio
     mse = np.mean((original_image - enhanced_image)**2)
-    print("max_pixel", np.max(original_image))
 
     # Calcular el PSNR
     psnr = 10 * np.log10((255**2) / mse)
@@ -62,6 +90,15 @@ def PSNR(original_image, enhanced_image):
 
 # Función para calcular el ínidice de borrosidad en imágenes en escala de grises
 def blur_metric(enhanced_image):
+    """
+    Función que calcula el índice de borrosidad de una imagen en escala de grises.
+
+    Parámetros:
+    enhanced_image: Imagen mejorada en escala de grises.
+
+    Retorna:
+    blur_index: Valor del índice de borrosidad de la imagen.
+    """
     # Calcular el índice de borrosidad
     M, N = enhanced_image.shape
     p_xy = np.sin(np.pi / 2 * (1 - enhanced_image / np.max(enhanced_image)))
@@ -70,6 +107,16 @@ def blur_metric(enhanced_image):
 
 # Función para calcular PL metric en imágenes en escala de grises
 def PL(original_image, enhanced_image):
+    """
+    Función que calcula el índice de calidad de una imagen en escala de grises.
+
+    Parámetros:
+    original_image: Imagen original en escala de grises.
+    enhanced_image: Imagen mejorada en escala de grises.
+
+    Retorna:
+    PL: Valor del índice de calidad de la imagen.
+    """
     psnr = PSNR(original_image, enhanced_image)
     blur = blur_metric(enhanced_image)
 
