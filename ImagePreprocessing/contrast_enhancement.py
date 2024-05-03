@@ -68,3 +68,24 @@ def HE(image):
     enhanced_image = cv2.equalizeHist(image)
     
     return enhanced_image
+
+# Eliminar pixeles calientes: radio de pixel = 2.0; Threshold = 50
+
+def remove_hot_pixels(image):
+    """
+    Elimina los pixeles calientes de una imagen EL.
+
+    Parámetros:
+        image: La imagen EL de entrada.
+        radius: Radio del pixel caliente.
+        threshold: Umbral para la eliminación de pixeles calientes.
+
+    Devuelve:
+        La imagen sin pixeles calientes.
+    """
+    radius=2.0
+    threshold=180
+    ret, mask = cv2.threshold(image, 180, 255, cv2.THRESH_BINARY)
+    image = cv2.inpaint(image, mask, 2, cv2.INPAINT_TELEA)
+
+    return image
