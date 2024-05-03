@@ -7,7 +7,6 @@ import numpy as np
 import cv2
 
 # Función para la lectura de imágenes
-
 def read_images(directory, allow_color_images=False):
     """
     Lee todas las imágenes en un directorio
