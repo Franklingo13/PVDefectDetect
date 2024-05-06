@@ -64,7 +64,10 @@ def CIR(original_image, enhanced_image):
             denominator_sum += w_original**2
 
     # Calcular el CIR
-    CIR = numerator_sum / denominator_sum
+    if denominator_sum != 0:
+        CIR = numerator_sum / denominator_sum
+    else:
+        CIR = 0
 
     return CIR
 
