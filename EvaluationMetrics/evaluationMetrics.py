@@ -54,10 +54,18 @@ def CIR(original_image, enhanced_image):
     for u in range(1, M-1):
         for v in range(1, N-1):
             # Calcular el contraste local para la imagen original
-            w_original = abs(original_image[u, v] - np.mean(original_image[u-1:u+2, v-1:v+2])) / (original_image[u, v] + np.mean(original_image[u-1:u+2, v-1:v+2]))
+            denominator_original = original_image[u, v] + np.mean(original_image[u-1:u+2, v-1:v+2])
+            if denominator_original != 0:
+                w_original = abs(original_image[u, v] - np.mean(original_image[u-1:u+2, v-1:v+2])) / denominator_original
+            else:
+                w_original = 0      # Evitar divisiones por cero
             
             # Calcular el contraste local para la imagen mejorada
-            w_enhanced = abs(enhanced_image[u, v] - np.mean(enhanced_image[u-1:u+2, v-1:v+2])) / (enhanced_image[u, v] + np.mean(enhanced_image[u-1:u+2, v-1:v+2]))
+            denominator_enhanced = enhanced_image[u, v] + np.mean(enhanced_image[u-1:u+2, v-1:v+2])
+            if denominator_enhanced != 0:
+                w_enhanced = abs(enhanced_image[u, v] - np.mean(enhanced_image[u-1:u+2, v-1:v+2])) / denominator_enhanced
+            else:
+                w_enhanced = 0      # Evitar divisiones por cero
 
             # Actualizar las sumas para el numerador y el denominador
             numerator_sum += (w_original - w_enhanced)**2
