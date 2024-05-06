@@ -161,3 +161,5 @@ cython_debug/
 
 # Agregar la carpeta de checkpoints de tensorflow
 TestsPV-vision/checkpoints/
+# Se agrega la careta de salidas de los algoritmos de mejora de imagen
+ImagePreprocessing/Salidas/
