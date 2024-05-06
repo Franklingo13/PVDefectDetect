@@ -53,31 +53,25 @@ def CIR(original_image, enhanced_image):
     # Calcular el CIR
     for u in range(1, M-1):
         for v in range(1, N-1):
+            # Calcular la media de los vecinos para la imagen original y la mejorada
+            mean_original = np.mean(original_image[u-1:u+2, v-1:v+2])
+            mean_enhanced = np.mean(enhanced_image[u-1:u+2, v-1:v+2])
+
             # Calcular el contraste local para la imagen original
-            denominator_original = original_image[u, v] + np.mean(original_image[u-1:u+2, v-1:v+2])
-            if denominator_original != 0:
-                w_original = abs(original_image[u, v] - np.mean(original_image[u-1:u+2, v-1:v+2])) / denominator_original
-            else:
-                w_original = 0      # Evitar divisiones por cero
+            denominator_original = original_image[u, v] + mean_original
+            w_original = abs(original_image[u, v] - mean_original) / denominator_original if denominator_original != 0 else 0
             
             # Calcular el contraste local para la imagen mejorada
-            denominator_enhanced = enhanced_image[u, v] + np.mean(enhanced_image[u-1:u+2, v-1:v+2])
-            if denominator_enhanced != 0:
-                w_enhanced = abs(enhanced_image[u, v] - np.mean(enhanced_image[u-1:u+2, v-1:v+2])) / denominator_enhanced
-            else:
-                w_enhanced = 0      # Evitar divisiones por cero
+            denominator_enhanced = enhanced_image[u, v] + mean_enhanced
+            w_enhanced = abs(enhanced_image[u, v] - mean_enhanced) / denominator_enhanced if denominator_enhanced != 0 else 0
 
             # Actualizar las sumas para el numerador y el denominador
             numerator_sum += (w_original - w_enhanced)**2
             denominator_sum += w_original**2
 
     # Calcular el CIR
-    if denominator_sum != 0:
-        CIR = numerator_sum / denominator_sum
-    else:
-        CIR = 0
+    CIR = numerator_sum / denominator_sum if denominator_sum != 0 else 0
 
-    return CIR
 
 # Función para calcular el PSNR entre las imágenes original y mejorada
 def PSNR(original_image, enhanced_image):
