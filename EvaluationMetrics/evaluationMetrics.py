@@ -72,6 +72,7 @@ def CIR(original_image, enhanced_image):
     # Calcular el CIR
     CIR = numerator_sum / denominator_sum if denominator_sum != 0 else 0
 
+    return CIR
 
 # Función para calcular el PSNR entre las imágenes original y mejorada
 def PSNR(original_image, enhanced_image):
