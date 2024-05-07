@@ -20,7 +20,7 @@ def contrast_metric(image):
     E = np.mean(image)
 
     # Obtener el número de niveles de grises (L)
-    num_gray_levels = np.max(image) + 1
+    num_gray_levels = int(np.max(image) + 1)
 
     # Calcular la probabilidad de ocurrencia de cada valor de píxel
     hist, _ = np.histogram(image, bins=num_gray_levels, range=(0, num_gray_levels))
