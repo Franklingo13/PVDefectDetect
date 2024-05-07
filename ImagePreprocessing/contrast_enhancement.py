@@ -104,3 +104,19 @@ def SubtractBG(imageEL, inageBG):
     imageEL = cv2.subtract(imageEL, inageBG)
 
     return imageEL
+
+def get_mean_max_min_image(dataset):
+    """
+    Obtiene la imagen promedio, máxima y mínima de un dataset de imágenes.
+
+    Parámetros:
+        dataset: Lista de imágenes.
+
+    Devuelve:
+        La imagen promedio, máxima y mínima.
+    """
+    mean_image = np.mean(dataset, axis=0)
+    max_image = np.max(dataset, axis=0)
+    min_image = np.min(dataset, axis=0)
+
+    return mean_image, max_image, min_image
