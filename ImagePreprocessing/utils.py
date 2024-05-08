@@ -35,6 +35,21 @@ def read_images(directory, allow_color_images=False):
             images.append(image)
     return images
 
+def read_folder_path(folder_path):
+    """
+    Función que lee una ruta de una carpeta y la reescribe de forma que sea legible para el sistema operativo.
+
+    Parámetros:
+    folder_path: Ruta de la carpeta.
+
+    Retorna:
+    folder_path: Ruta de la carpeta legible para el sistema operativo.
+    """
+    folder_path = folder_path.replace("\\", "/")
+    if folder_path[-1] != "/":
+        folder_path += "/"
+    return folder_path
+
 def mostrar_imagen_con_roi(imagen, roi, titulo, esquina_superior_izquierda, ancho, alto):
     """
     Muestra una imagen con una zona ampliada o ROI.
