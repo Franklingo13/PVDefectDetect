@@ -19,7 +19,7 @@ dataset = read_images(dataset_path)
 print("Número de imágenes en el dataset original: ", len(datasetOriginal))
 print("Número de imágenes en el dataset:", len(dataset))
 
-## Obtención de métricas `contrast_metric` y `PL` para las imágenes del dataset
+## Obtención de métricas `contrast_metric`, `PL` y `CIR` para las imágenes del dataset
 contrast_values = []
 for image in dataset:
     contrast_values.append(contrast_metric(image))
@@ -30,10 +30,18 @@ for imageMejorada, imageOriginal in zip(dataset, datasetOriginal):
     PL_values.append(PL(imageOriginal, imageMejorada))
 print("PL promedio de las imágenes:", np.mean(PL_values))
 
+CIR_values = []
+for i, (imageMejorada, imageOriginal) in enumerate(zip(dataset, datasetOriginal)):
+    if i % 10 == 0:
+        print("Imagen: ", i)
+    CIR_values.append(CIR(imageOriginal, imageMejorada))
+print("CIR promedio de las imágenes:", np.mean(CIR_values))
+
 ## Anotación de los resultados en un archivo CSV
 df = pd.DataFrame({
     "Contraste": contrast_values,
-    "PL": PL_values
+    "PL": PL_values,
+    "CIR": CIR_values
 })
 df.to_csv(os.path.join(salidas_path, nombre_archivo), index=False)
 
