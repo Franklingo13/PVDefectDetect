@@ -13,16 +13,16 @@ dataset_path = read_folder_path(r"D:\Documentos\Universidad de Cuenca\Trabajo de
 
 dataset = read_images(dataset_path)
 
-datasetNoBG_CLAHE = []
+dataset_CLAHE = []
 
 for i, image in enumerate(dataset):
-    datasetNoBG_CLAHE.append(CLAHE(image))
+    dataset_CLAHE.append(CLAHE(image))
 
 
 ## Creación de un dataset con las imágenes mejoradas, que se almacena en el directorio `salidas_path/datasetCLAHE`
 os.makedirs(os.path.join(salidas_path, "datasetNoBG_CLAHE"), exist_ok=True)
-for i, image in enumerate(datasetNoBG_CLAHE):
+for i, image in enumerate(dataset_CLAHE):
     cv2.imwrite(os.path.join(salidas_path, "datasetNoBG_CLAHE", f"NoBGCLAHE_{i}.jpg"), image)
 print("Imágenes guardadas en datasetNoBG_CLAHE")
-print("Número de imágenes en datasetNoBG_CLAHE:", len(datasetNoBG_CLAHE))
+print("Número de imágenes en datasetNoBG_CLAHE:", len(dataset_CLAHE))
 
