@@ -7,10 +7,10 @@ from ImagePreprocessing.contrast_enhancement import *
 from EvaluationMetrics.evaluationMetrics import *
 
 original_path = r"E:/Panel_30W/P13/V24.2_I2.50_t30/JPEG_8"
-path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste\datasetNoBG_MMC"  
+path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste\datasetNoBG_CLAHE"  
 salidas_path = read_folder_path(r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste")
 dataset_path = read_folder_path(path)
-nombre_archivo = "metrics_datasetNoBG_MMC.csv"
+nombre_archivo = "metrics_datasetNoBG_CLAHE.csv"
 print("Directorio a leer:", dataset_path)
 print("Directorio original:", original_path)
 
