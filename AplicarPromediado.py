@@ -7,7 +7,7 @@ from ImagePreprocessing.contrast_enhancement import *
 from EvaluationMetrics.evaluationMetrics import *
 
 ## Aplicación del algoritmo `get_mean_max_min_image(dataset)` a un dataset,  y guardado de las imágenes mejoradas
-# en este caso: datasetNoBG_CLAHE
+
 path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste\datasetNoBG_MMC"  
 salidas_path = read_folder_path(r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste")
 dataset_path = read_folder_path(path)
