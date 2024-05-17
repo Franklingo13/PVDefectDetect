@@ -7,7 +7,6 @@ from ImagePreprocessing.contrast_enhancement import *
 from EvaluationMetrics.evaluationMetrics import *
 
 ## Aplicación del algoritmo CLAHE a un dataset,  y guardado de las imágenes mejoradas
-# en este caso: datasetNoBG  
 salidas_path = read_folder_path(r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste")
 dataset_path = read_folder_path(r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste\datasetNoBG")
 
