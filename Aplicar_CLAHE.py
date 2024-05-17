@@ -7,8 +7,10 @@ from ImagePreprocessing.contrast_enhancement import *
 from EvaluationMetrics.evaluationMetrics import *
 
 ## Aplicación del algoritmo CLAHE a un dataset,  y guardado de las imágenes mejoradas
-salidas_path = read_folder_path(r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste")
-dataset_path = read_folder_path(r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste\datasetNoBG")
+salidas_path = read_folder_path(
+    r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\panel_260W")
+dataset_path = read_folder_path(
+    r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\panel_260W\V44.5_I9.16_t_NoBG")
 
 dataset = read_images(dataset_path)
 
@@ -18,10 +20,11 @@ for i, image in enumerate(dataset):
     dataset_CLAHE.append(CLAHE(image))
 
 
-## Creación de un dataset con las imágenes mejoradas, que se almacena en el directorio `salidas_path/datasetCLAHE`
-os.makedirs(os.path.join(salidas_path, "datasetNoBG_CLAHE"), exist_ok=True)
+## Creación de un dataset con las imágenes mejoradas, que se almacena en el directorio `salidas_path/nombre_carpeta`
+nombre_carpeta = "V44.5_I9.16_t_NoBG_CLAHE"
+os.makedirs(os.path.join(salidas_path, nombre_carpeta), exist_ok=True)
 for i, image in enumerate(dataset_CLAHE):
-    cv2.imwrite(os.path.join(salidas_path, "datasetNoBG_CLAHE", f"NoBGCLAHE_{i}.jpg"), image)
-print("Imágenes guardadas en datasetNoBG_CLAHE")
-print("Número de imágenes en datasetNoBG_CLAHE:", len(dataset_CLAHE))
+    cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "imagen"+str(i)+".jpg"), image)
+print("Imágenes guardadas en: ", nombre_carpeta)
+print("Número de imágenes: ", len(dataset_CLAHE))
 
