@@ -219,6 +219,36 @@ ax.set_xticklabels(bar_labels)
 ax.set_title('Valor medio e intervalo de confianza para el contraste de cada set de datos')
 ax.yaxis.grid(True)
 plt.tight_layout()
+#plt.show()
+
+# Gráfico de barras para los valores de CIR
+fig, ax = plt.subplots()
+bar_labels = ['CIR MMCE', 'CIR CLAHE', 'CIR HE', 'CIR NoBG', 'CIR NoBG CLAHE', 'CIR NoBG MMCE']
+x_pos = np.arange(len(bar_labels))
+bars = ax.bar(x_pos, means_cir, yerr=[abs(top-bot)/2 for top,bot in cis_cir], align='center', alpha=0.5, ecolor='black', capsize=10)
+for i in range(len(bars)):
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_cir[i], 2)), ha='center', va='bottom')
+ax.set_ylabel('Valor Medio')
+ax.set_xticks(x_pos)
+ax.set_xticklabels(bar_labels)
+ax.set_title('Valor medio e intervalo de confianza para el CIR de cada set de datos')
+ax.yaxis.grid(True)
+plt.tight_layout()
+#plt.show()
+
+# Gráfico de barras para los valores de PL
+fig, ax = plt.subplots()
+bar_labels = ['PL MMCE', 'PL CLAHE', 'PL HE', 'PL NoBG', 'PL NoBG CLAHE', 'PL NoBG MMCE']
+x_pos = np.arange(len(bar_labels))
+bars = ax.bar(x_pos, means_pl, yerr=[abs(top-bot)/2 for top,bot in cis_pl], align='center', alpha=0.5, ecolor='black', capsize=10)
+for i in range(len(bars)):
+    ax.text(bars[i].get_x() + bars[i].get_width() / 2, bars[i].get_height(), str(round(means_pl[i], 2)), ha='center', va='bottom')
+ax.set_ylabel('Valor Medio')
+ax.set_xticks(x_pos)
+ax.set_xticklabels(bar_labels)
+ax.set_title('Valor medio e intervalo de confianza para el PL de cada set de datos')
+ax.yaxis.grid(True)
+plt.tight_layout()
 plt.show()
 
 # Tabla resumen con DataFrame de pandas
