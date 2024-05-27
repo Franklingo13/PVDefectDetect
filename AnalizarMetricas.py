@@ -212,7 +212,7 @@ bar_labels = ['Contraste Original', 'Contraste MMCE', 'Contraste CLAHE', 'Contra
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, means_contrast, yerr=[abs(top-bot)/2 for top,bot in cis_contrast], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width() / 2, bars[i].get_height(), str(round(means_contrast[i], 2)), ha='center', va='bottom')
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_contrast[i], 2)), ha='center', va='bottom')
 ax.set_ylabel('Valor Medio')
 ax.set_xticks(x_pos)
 ax.set_xticklabels(bar_labels)
@@ -242,7 +242,7 @@ bar_labels = ['PL MMCE', 'PL CLAHE', 'PL HE', 'PL NoBG', 'PL NoBG CLAHE', 'PL No
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, means_pl, yerr=[abs(top-bot)/2 for top,bot in cis_pl], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width() / 2, bars[i].get_height(), str(round(means_pl[i], 2)), ha='center', va='bottom')
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_pl[i], 2)), ha='center', va='bottom')
 ax.set_ylabel('Valor Medio')
 ax.set_xticks(x_pos)
 ax.set_xticklabels(bar_labels)
