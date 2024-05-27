@@ -185,15 +185,15 @@ cis_pl = [ci_pl_MMCE, ci_pl_CLAHE, ci_pl_HE, ci_pl_NoBG, ci_pl_NoBG_CLAHE, ci_pl
 
 # Gráfico de barras para los valores de contraste
 fig, ax = plt.subplots()
-bar_labels = ['Contraste Original', 'Contraste MMCE', 'Contraste CLAHE', 'Contraste HE', 'Contraste NoBG', 'Contraste NoBG CLAHE', 'Contraste NoBG MMCE']
+bar_labels = ['Contrast Original', 'Contrast MMCE', 'Contrast CLAHE', 'Contrast HE', 'Contrast NoBG', 'Contrast NoBG CLAHE', 'Contrast NoBG MMCE']
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, means_contrast, yerr=[abs(top-bot)/2 for top,bot in cis_contrast], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_contrast[i], 2)), ha='center', va='bottom')
-ax.set_ylabel('Valor Medio')
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_contrast[i], 2)), ha='center', va='bottom', fontsize=14)
+ax.set_ylabel('Valor Medio', fontsize=14)
 ax.set_xticks(x_pos)
-ax.set_xticklabels(bar_labels)
-ax.set_title('Valor medio para el contraste de cada conjunto de imágenes')
+ax.set_xticklabels(bar_labels, fontsize=12)
+ax.set_title('Valor medio para el Contrast de cada conjunto de imágenes', fontsize=16)
 ax.yaxis.grid(True)
 plt.tight_layout()
 #plt.show()
@@ -204,11 +204,11 @@ bar_labels = ['CIR MMCE', 'CIR CLAHE', 'CIR HE', 'CIR NoBG', 'CIR NoBG CLAHE', '
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, means_cir, yerr=[abs(top-bot)/2 for top,bot in cis_cir], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_cir[i], 2)), ha='center', va='bottom')
-ax.set_ylabel('Valor Medio')
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_cir[i], 2)), ha='center', va='bottom', fontsize=14)
+ax.set_ylabel('Valor Medio', fontsize=14)
 ax.set_xticks(x_pos)
-ax.set_xticklabels(bar_labels)
-ax.set_title('Valor medio para el CIR de cada conjunto de imágenes')
+ax.set_xticklabels(bar_labels, fontsize=12)
+ax.set_title('Valor medio para el CIR de cada conjunto de imágenes', fontsize=16)
 ax.yaxis.grid(True)
 plt.tight_layout()
 #plt.show()
@@ -219,11 +219,11 @@ bar_labels = ['PL MMCE', 'PL CLAHE', 'PL HE', 'PL NoBG', 'PL NoBG CLAHE', 'PL No
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, means_pl, yerr=[abs(top-bot)/2 for top,bot in cis_pl], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_pl[i], 2)), ha='center', va='bottom')
-ax.set_ylabel('Valor Medio')
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_pl[i], 2)), ha='center', va='bottom', fontsize=13)
+ax.set_ylabel('Valor Medio', fontsize=14)
 ax.set_xticks(x_pos)
-ax.set_xticklabels(bar_labels)
-ax.set_title('Valor medio para el PL de cada conjunto de imágenes')
+ax.set_xticklabels(bar_labels, fontsize=12)
+ax.set_title('Valor medio para el PL de cada conjunto de imágenes', fontsize=16)
 ax.yaxis.grid(True)
 plt.tight_layout()
 plt.show()
