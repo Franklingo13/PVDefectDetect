@@ -9,7 +9,6 @@ from ImagePreprocessing.utils import *
 
 path = read_folder_path(r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste")
 nombre_archivo = "metricsMMC.csv"
-print("Directorio a leer:", path)
 
 
 contrast_original = []  # Lista para almacenar los valores de contraste del dataset original
@@ -25,8 +24,6 @@ contrast_original = df["Contraste EL"].to_list()
 contrast_MMCE = df["Contraste MMC"].to_list()
 cir_MMCE = df["CIR MMC"].to_list()
 pl_MMCE = df["PL MMC"].to_list()
-
-print("Tamaño de la muestra original:", len(contrast_original))
 
 # Cálculo de las medias de los valores de contraste, PL y CIR
 mean_contrast_original = np.mean(contrast_original)
@@ -66,17 +63,9 @@ bar_labels = ['Contraste Original', 'Contraste MMC', 'PL MMC']
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, means, yerr=[abs(top-bot)/2 for top,bot in cis], align='center', alpha=0.5, ecolor='black', capsize=10)
 
-# Imprimir el valor medio y el intervalo de confianza
-print("Contraste Original:", mean_contrast_original, (ci_contrast_original[1]-ci_contrast_original[0])/2)
-print("Desviación estándar original:", np.std(contrast_original))
-print("Contraste MMC:", mean_contrast_MMCE, ci_contrast_MMCE)
-print("CIR MMC:", mean_cir_MMCE, ci_cir_MMCE)
-print("PL MMC:", mean_pl_MMCE, ci_pl_MMCE)
-
-# for bar, ci in zip(bars, cis):
-#     height = bar.get_height()
-#     ax.text(bar.get_x() + bar.get_width()/2.0, height, f'{height:.2f}\n({ci[0]:.2f}, {ci[1]:.2f})', ha='center', va='bottom')
-
+# Añadir el valor de la media a las barras
+for i in range(len(bars)):
+    ax.text(bars[i].get_x() + bars[i].get_width() / 2, bars[i].get_height(), str(round(means[i], 2)), ha='center', va='bottom')
 
 # Añadir etiquetas, título y ejes
 ax.set_ylabel('Valor Medio')
@@ -88,3 +77,17 @@ ax.yaxis.grid(True)
 # Mostrar el gráfico
 plt.tight_layout()
 plt.show()
+
+# Tabla resumen con DataFrame de pandas
+datasets = ['Contraste Original', 'Contraste MMCE', 'PL MMCE']
+alphas = [0.05, 0.05, 0.05]
+cis2 = [(ci_contrast_original[1]-ci_contrast_original[0])/2, (ci_contrast_MMCE[1]-ci_contrast_MMCE[0])/2, (ci_pl_MMCE[1]-ci_pl_MMCE[0])/2]
+# Crear el DataFrame
+df_results = pd.DataFrame({
+    'Conjunto de datos': datasets,
+    'Media': means,
+    'Nivel Significativo': alphas,
+    'Intervalo de confianza': cis2
+})
+
+print(df_results)
