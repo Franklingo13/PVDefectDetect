@@ -171,29 +171,6 @@ ci_pl_NoBG_MMCE = stats.norm.interval(0.95, loc=mean_pl_NoBG_MMCE, scale=sem_pl_
 means = [mean_contrast_original, mean_contrast_MMCE, mean_pl_MMCE]
 cis = [ci_contrast_original, ci_contrast_MMCE, ci_pl_MMCE]
 
-# Crear el gráfico de barras
-fig, ax = plt.subplots()
-
-# Añadir las barras para cada media
-bar_labels = ['Contraste Original', 'Contraste MMCE', 'PL MMC']
-x_pos = np.arange(len(bar_labels))
-bars = ax.bar(x_pos, means, yerr=[abs(top-bot)/2 for top,bot in cis], align='center', alpha=0.5, ecolor='black', capsize=10)
-
-# Añadir el valor de la media a las barras
-for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width() / 2, bars[i].get_height(), str(round(means[i], 2)), ha='center', va='bottom')
-
-# Añadir etiquetas, título y ejes
-ax.set_ylabel('Valor Medio')
-ax.set_xticks(x_pos)
-ax.set_xticklabels(bar_labels)
-ax.set_title('Valor medio e intervalo de confianza para cada métrica')
-ax.yaxis.grid(True)
-
-# Mostrar el gráfico
-plt.tight_layout()
-#plt.show()
-
 # Se crea una lista con los valores medios de contraste y los intervalos de confianza
 means_contrast = [mean_contrast_original, mean_contrast_MMCE, mean_contrast_CLAHE, mean_contrast_HE, mean_contrast_NoBG, mean_contrast_NoBG_CLAHE, mean_contrast_NoBG_MMCE]
 cis_contrast = [ci_contrast_original, ci_contrast_MMCE, ci_contrast_CLAHE, ci_contrast_HE, ci_contrast_NoBG, ci_contrast_NoBG_CLAHE, ci_contrast_NoBG_MMCE]
@@ -216,7 +193,7 @@ for i in range(len(bars)):
 ax.set_ylabel('Valor Medio')
 ax.set_xticks(x_pos)
 ax.set_xticklabels(bar_labels)
-ax.set_title('Valor medio e intervalo de confianza para el contraste de cada set de datos')
+ax.set_title('Valor medio para el contraste de cada conjunto de imágenes')
 ax.yaxis.grid(True)
 plt.tight_layout()
 #plt.show()
@@ -231,7 +208,7 @@ for i in range(len(bars)):
 ax.set_ylabel('Valor Medio')
 ax.set_xticks(x_pos)
 ax.set_xticklabels(bar_labels)
-ax.set_title('Valor medio e intervalo de confianza para el CIR de cada set de datos')
+ax.set_title('Valor medio para el CIR de cada conjunto de imágenes')
 ax.yaxis.grid(True)
 plt.tight_layout()
 #plt.show()
@@ -246,21 +223,47 @@ for i in range(len(bars)):
 ax.set_ylabel('Valor Medio')
 ax.set_xticks(x_pos)
 ax.set_xticklabels(bar_labels)
-ax.set_title('Valor medio e intervalo de confianza para el PL de cada set de datos')
+ax.set_title('Valor medio para el PL de cada conjunto de imágenes')
 ax.yaxis.grid(True)
 plt.tight_layout()
 plt.show()
 
-# Tabla resumen con DataFrame de pandas
-datasets = ['Contraste Original', 'Contraste MMCE', 'PL MMCE']
-alphas = [0.05, 0.05, 0.05]
-cis2 = [(ci_contrast_original[1]-ci_contrast_original[0])/2, (ci_contrast_MMCE[1]-ci_contrast_MMCE[0])/2, (ci_pl_MMCE[1]-ci_pl_MMCE[0])/2]
-# Crear el DataFrame
-df_results = pd.DataFrame({
-    'Conjunto de datos': datasets,
-    'Media': means,
-    'Nivel Significativo': alphas,
-    'Intervalo de confianza': cis2
-})
 
-print(df_results)
+# Tabla resumen con DataFrame de pandas sobre la métrica de contraste
+datasets_contraste = ['Contraste Original', 'Contraste MMCE', 'Contraste CLAHE', 'Contraste HE', 'Contraste NoBG', 'Contraste NoBG CLAHE', 'Contraste NoBG MMCE']
+alphas_contraste = [0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
+cis_contraste = [(ci_contrast_original[1]-ci_contrast_original[0])/2, (ci_contrast_MMCE[1]-ci_contrast_MMCE[0])/2, (ci_contrast_CLAHE[1]-ci_contrast_CLAHE[0])/2, (ci_contrast_HE[1]-ci_contrast_HE[0])/2, (ci_contrast_NoBG[1]-ci_contrast_NoBG[0])/2, (ci_contrast_NoBG_CLAHE[1]-ci_contrast_NoBG_CLAHE[0])/2, (ci_contrast_NoBG_MMCE[1]-ci_contrast_NoBG_MMCE[0])/2]
+# Crear el DataFrame
+df_results_contraste = pd.DataFrame({
+    'Conjunto de datos': datasets_contraste,
+    'Media': means_contrast,
+    'Nivel Significativo': alphas_contraste,
+    'Intervalo de confianza': cis_contraste
+})
+print(df_results_contraste)
+
+# Tabla resumen con DataFrame de pandas sobre la métrica de CIR
+datasets_cir = ['CIR MMCE', 'CIR CLAHE', 'CIR HE', 'CIR NoBG', 'CIR NoBG CLAHE', 'CIR NoBG MMCE']
+alphas_cir = [0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
+cis_cir = [(ci_cir_MMCE[1]-ci_cir_MMCE[0])/2, (ci_cir_CLAHE[1]-ci_cir_CLAHE[0])/2, (ci_cir_HE[1]-ci_cir_HE[0])/2, (ci_cir_NoBG[1]-ci_cir_NoBG[0])/2, (ci_cir_NoBG_CLAHE[1]-ci_cir_NoBG_CLAHE[0])/2, (ci_cir_NoBG_MMCE[1]-ci_cir_NoBG_MMCE[0])/2]
+# Crear el DataFrame
+df_results_cir = pd.DataFrame({
+    'Conjunto de datos': datasets_cir,
+    'Media': means_cir,
+    'Nivel Significativo': alphas_cir,
+    'Intervalo de confianza': cis_cir
+})
+print(df_results_cir)
+
+# Tabla resumen con DataFrame de pandas sobre la métrica de PL
+datasets_pl = ['PL MMCE', 'PL CLAHE', 'PL HE', 'PL NoBG', 'PL NoBG CLAHE', 'PL NoBG MMCE']
+alphas_pl = [0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
+cis_pl = [(ci_pl_MMCE[1]-ci_pl_MMCE[0])/2, (ci_pl_CLAHE[1]-ci_pl_CLAHE[0])/2, (ci_pl_HE[1]-ci_pl_HE[0])/2, (ci_pl_NoBG[1]-ci_pl_NoBG[0])/2, (ci_pl_NoBG_CLAHE[1]-ci_pl_NoBG_CLAHE[0])/2, (ci_pl_NoBG_MMCE[1]-ci_pl_NoBG_MMCE[0])/2]
+# Crear el DataFrame
+df_results_pl = pd.DataFrame({
+    'Conjunto de datos': datasets_pl,
+    'Media': means_pl,
+    'Nivel Significativo': alphas_pl,
+    'Intervalo de confianza': cis_pl
+})
+print(df_results_pl)
