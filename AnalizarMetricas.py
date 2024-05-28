@@ -15,6 +15,7 @@ acrhivo_NoBG = "metricsNoBG.csv"
 archivo_NoBG_CLAHE = "metrics_datasetNoBG_CLAHE.csv"
 archivo_NoBG_MMCE = "metrics_datasetNoBG_MMC.csv"
 archivo_img_promediadas = "metricsMeanMaxMin_datasetEL.csv"
+archivo_img_promediadas_NoBG_CLAHE = "metricsMeanMaxMin_datasetNoBG_CLAHE.csv"
 
 
 
@@ -48,6 +49,8 @@ df_HE = pd.read_csv(os.path.join(path, archivo_HE))
 df_NoBG = pd.read_csv(os.path.join(path, acrhivo_NoBG))
 df_NoBG_CLAHE = pd.read_csv(os.path.join(path, archivo_NoBG_CLAHE))
 df_NoBG_MMCE = pd.read_csv(os.path.join(path, archivo_NoBG_MMCE))
+df_img_promediadas = pd.read_csv(os.path.join(path, archivo_img_promediadas))
+df_img_promediadas_NoBG_CLAHE = pd.read_csv(os.path.join(path, archivo_img_promediadas_NoBG_CLAHE))
 
 # Obtener los valores de contraste, PL y CIR del dataset con MMC
 contrast_original = df["Contraste EL"].to_list()
@@ -74,6 +77,26 @@ pl_NoBG_CLAHE = df_NoBG_CLAHE["PL"].to_list()
 contrast_NoBG_MMCE = df_NoBG_MMCE["Contraste"].to_list()
 cir_NoBG_MMCE = df_NoBG_MMCE["CIR"].to_list()
 pl_NoBG_MMCE = df_NoBG_MMCE["PL"].to_list()
+# Obtener métricas de las imágenes promediadas
+contrast_meanEL = df_img_promediadas["Contraste Mean"].to_list()
+cir_meanEL = df_img_promediadas["CIR Mean"].to_list()
+pl_meanEL = df_img_promediadas["PL Mean"].to_list()
+contrast_maxEL = df_img_promediadas["Contraste Max"].to_list()
+cir_maxEL = df_img_promediadas["CIR Max"].to_list()
+pl_maxEL = df_img_promediadas["PL Max"].to_list()
+contrast_minEL = df_img_promediadas["Contraste Min"].to_list()
+cir_minEL = df_img_promediadas["CIR Min"].to_list()
+pl_minEL = df_img_promediadas["PL Min"].to_list()
+# Obtener métricas de las imágenes promediadas sin fondo con CLAHE
+contrast_meanEL_NoBG_CLAHE = df_img_promediadas_NoBG_CLAHE["Contrast Mean"].to_list()[0]
+cir_meanEL_NoBG_CLAHE = df_img_promediadas_NoBG_CLAHE["CIR Mean"].to_list()[0]
+pl_meanEL_NoBG_CLAHE = df_img_promediadas_NoBG_CLAHE["PL Mean"].to_list()[0]
+contrast_maxEL_NoBG_CLAHE = df_img_promediadas_NoBG_CLAHE["Contrast Max"].to_list()[0]
+cir_maxEL_NoBG_CLAHE = df_img_promediadas_NoBG_CLAHE["CIR Max"].to_list()[0]
+pl_maxEL_NoBG_CLAHE = df_img_promediadas_NoBG_CLAHE["PL Max"].to_list()[0]
+contrast_minEL_NoBG_CLAHE = df_img_promediadas_NoBG_CLAHE["Contrast Min"].to_list()[0]
+cir_minEL_NoBG_CLAHE = df_img_promediadas_NoBG_CLAHE["CIR Min"].to_list()[0]
+pl_minEL_NoBG_CLAHE = df_img_promediadas_NoBG_CLAHE["PL Min"].to_list()[0]
 
 
 
@@ -226,7 +249,98 @@ ax.set_xticklabels(bar_labels, fontsize=12)
 ax.set_title('Valor medio para el PL de cada conjunto de imágenes', fontsize=16)
 ax.yaxis.grid(True)
 plt.tight_layout()
+#plt.show()
+
+# # Gráfico de barras para los valores de contraste de las imágenes promediadas
+# fig, ax = plt.subplots()
+# bar_labels = ['Contrast Original', 'Contrast Mean', 'Contrast Max', 'Contrast Min']
+# x_pos = np.arange(len(bar_labels))
+# bars = ax.bar(x_pos, [mean_contrast_original, contrast_meanEL, contrast_maxEL, contrast_minEL], align='center', alpha=0.5, ecolor='black', capsize=10)
+# for i in range(len(bars)):
+#     ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([mean_contrast_original, contrast_meanEL, contrast_maxEL, contrast_minEL][i], 2)), ha='center', va='bottom', fontsize=14)
+# ax.set_ylabel('Valor Medio', fontsize=14)
+# ax.set_xticks(x_pos)
+# ax.set_xticklabels(bar_labels, fontsize=12)
+# ax.set_title('Valor de Contrast en las imágenes promediadas', fontsize=16)
+# ax.yaxis.grid(True)
+# plt.tight_layout()
+# plt.show()
+
+# # Gráfico de barras para los valores de CIR de las imágenes promediadas
+# fig, ax = plt.subplots()
+# bar_labels = ['CIR Mean', 'CIR Max', 'CIR Min']
+# x_pos = np.arange(len(bar_labels))
+# bars = ax.bar(x_pos, [cir_meanEL, cir_maxEL, cir_minEL], align='center', alpha=0.5, ecolor='black', capsize=10)
+# for i in range(len(bars)):
+#     ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([cir_meanEL, cir_maxEL, cir_minEL][i], 2)), ha='center', va='bottom', fontsize=14)
+# ax.set_ylabel('Valor Medio', fontsize=14)
+# ax.set_xticks(x_pos)
+# ax.set_xticklabels(bar_labels, fontsize=12)
+# ax.set_title('Valor de CIR en las imágenes promediadas', fontsize=16)
+# ax.yaxis.grid(True)
+# plt.tight_layout()
+# plt.show()
+
+# # Gráfico de barras para los valores de PL de las imágenes promediadas
+# fig, ax = plt.subplots()
+# bar_labels = ['PL Mean', 'PL Max', 'PL Min']
+# x_pos = np.arange(len(bar_labels))
+# bars = ax.bar(x_pos, [pl_meanEL, pl_maxEL, pl_minEL], align='center', alpha=0.5, ecolor='black', capsize=10)
+# for i in range(len(bars)):
+#     ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([pl_meanEL, pl_maxEL, pl_minEL][i], 2)), ha='center', va='bottom', fontsize=14)
+# ax.set_ylabel('Valor Medio', fontsize=14)
+# ax.set_xticks(x_pos)
+# ax.set_xticklabels(bar_labels, fontsize=12)
+# ax.set_title('Valor de PL en las imágenes promediadas', fontsize=16)
+# ax.yaxis.grid(True)
+# plt.tight_layout()
+# plt.show()
+
+# Gráfico de barras para los valores de contraste de las imágenes promediadas sin fondo con CLAHE
+fig, ax = plt.subplots()
+bar_labels = ['Contrast Original', 'Contrast Mean', 'Contrast Max', 'Contrast Min']
+x_pos = np.arange(len(bar_labels))
+bars = ax.bar(x_pos, [mean_contrast_original, contrast_meanEL_NoBG_CLAHE, contrast_maxEL_NoBG_CLAHE, contrast_minEL_NoBG_CLAHE], align='center', alpha=0.5, ecolor='black', capsize=10)
+for i in range(len(bars)):
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([mean_contrast_original, contrast_meanEL_NoBG_CLAHE, contrast_maxEL_NoBG_CLAHE, contrast_minEL_NoBG_CLAHE][i], 2)), ha='center', va='bottom', fontsize=14)
+ax.set_ylabel('Contrast', fontsize=14)
+ax.set_xticks(x_pos)
+ax.set_xticklabels(bar_labels, fontsize=12)
+ax.set_title('Valor de Contrast en las imágenes promediadas sin fondo con CLAHE', fontsize=16)
+ax.yaxis.grid(True)
+plt.tight_layout()
+#plt.show()
+
+# Gráfico de barras para los valores de CIR de las imágenes promediadas sin fondo con CLAHE
+fig, ax = plt.subplots()
+bar_labels = ['CIR Mean', 'CIR Max', 'CIR Min']
+x_pos = np.arange(len(bar_labels))
+bars = ax.bar(x_pos, [cir_meanEL_NoBG_CLAHE, cir_maxEL_NoBG_CLAHE, cir_minEL_NoBG_CLAHE], align='center', alpha=0.5, ecolor='black', capsize=10)
+for i in range(len(bars)):
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([cir_meanEL_NoBG_CLAHE, cir_maxEL_NoBG_CLAHE, cir_minEL_NoBG_CLAHE][i], 2)), ha='center', va='bottom', fontsize=14)
+ax.set_ylabel('CIR', fontsize=14)
+ax.set_xticks(x_pos)
+ax.set_xticklabels(bar_labels, fontsize=12)
+ax.set_title('Valor de CIR en las imágenes promediadas sin fondo con CLAHE', fontsize=16)
+ax.yaxis.grid(True)
+plt.tight_layout()
+#plt.show()
+
+# Gráfico de barras para los valores de PL de las imágenes promediadas sin fondo con CLAHE
+fig, ax = plt.subplots()
+bar_labels = ['PL Mean', 'PL Max', 'PL Min']
+x_pos = np.arange(len(bar_labels))
+bars = ax.bar(x_pos, [pl_meanEL_NoBG_CLAHE, pl_maxEL_NoBG_CLAHE, pl_minEL_NoBG_CLAHE], align='center', alpha=0.5, ecolor='black', capsize=10)
+for i in range(len(bars)):
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([pl_meanEL_NoBG_CLAHE, pl_maxEL_NoBG_CLAHE, pl_minEL_NoBG_CLAHE][i], 2)), ha='center', va='bottom', fontsize=14)
+ax.set_ylabel('CIR', fontsize=14)
+ax.set_xticks(x_pos)
+ax.set_xticklabels(bar_labels, fontsize=12)
+ax.set_title('Valor de PL en las imágenes promediadas sin fondo con CLAHE', fontsize=16)
+ax.yaxis.grid(True)
+plt.tight_layout()
 plt.show()
+
 
 
 # Tabla resumen con DataFrame de pandas sobre la métrica de contraste
