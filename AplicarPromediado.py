@@ -8,7 +8,7 @@ from EvaluationMetrics.evaluationMetrics import *
 
 ## Aplicación del algoritmo `get_mean_max_min_image(dataset)` a un dataset,  y guardado de las imágenes mejoradas
 
-path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste\datasetNoBG_MMC"  
+path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\panel_260W\V44.5_I9.16_t_NoBG_CLAHE"  
 salidas_path = read_folder_path(r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\TestContraste")
 dataset_path = read_folder_path(path)
 print("Directorio a leer:", dataset_path)
@@ -20,7 +20,7 @@ print("Número de imágenes en el dataset:", len(dataset))
 mean_image, max_image, min_image = get_mean_max_min_image(dataset)
 
 ## Creación de un dataset con las imágenes mejoradas, que se almacena en el directorio `salidas_path/nombre_carpeta`
-nombre_carpeta = "datasetNoBG_MMC_mean_max_min"
+nombre_carpeta = "datasetNoBG_MMC_mean_max_min_260W"
 os.makedirs(os.path.join(salidas_path, nombre_carpeta), exist_ok=True)
 cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "mean_image.jpg"), mean_image)
 cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "max_image.jpg"), max_image)
