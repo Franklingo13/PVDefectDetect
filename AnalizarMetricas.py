@@ -298,7 +298,7 @@ plt.tight_layout()
 
 # Gráfico de barras para los valores de contraste de las imágenes promediadas sin fondo con CLAHE
 fig, ax = plt.subplots()
-bar_labels = ['Contrast Original', 'Contrast Mean', 'Contrast Max', 'Contrast Min']
+bar_labels = ['Contrast Img. Original', 'Contrast Img. Promedio', 'Contrast Img. Máximos', 'Contrast Img. Mínimos']
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, [mean_contrast_original, contrast_meanEL_NoBG_CLAHE, contrast_maxEL_NoBG_CLAHE, contrast_minEL_NoBG_CLAHE], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
@@ -313,7 +313,7 @@ plt.tight_layout()
 
 # Gráfico de barras para los valores de CIR de las imágenes promediadas sin fondo con CLAHE
 fig, ax = plt.subplots()
-bar_labels = ['CIR Mean', 'CIR Max', 'CIR Min']
+bar_labels = ['CIR Img. Promedio', 'CIR Img. Máximos', 'CIR Img. Mínimos']
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, [cir_meanEL_NoBG_CLAHE, cir_maxEL_NoBG_CLAHE, cir_minEL_NoBG_CLAHE], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
@@ -328,12 +328,12 @@ plt.tight_layout()
 
 # Gráfico de barras para los valores de PL de las imágenes promediadas sin fondo con CLAHE
 fig, ax = plt.subplots()
-bar_labels = ['PL Mean', 'PL Max', 'PL Min']
+bar_labels = ['PL Img. Promedio', 'PL Img. Máximos', 'PL Img. Mínimos']
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, [pl_meanEL_NoBG_CLAHE, pl_maxEL_NoBG_CLAHE, pl_minEL_NoBG_CLAHE], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
     ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([pl_meanEL_NoBG_CLAHE, pl_maxEL_NoBG_CLAHE, pl_minEL_NoBG_CLAHE][i], 2)), ha='center', va='bottom', fontsize=14)
-ax.set_ylabel('CIR', fontsize=14)
+ax.set_ylabel('PL', fontsize=14)
 ax.set_xticks(x_pos)
 ax.set_xticklabels(bar_labels, fontsize=12)
 ax.set_title('Valor de PL en las imágenes promediadas sin fondo con CLAHE', fontsize=16)
