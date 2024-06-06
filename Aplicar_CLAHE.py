@@ -8,9 +8,9 @@ from EvaluationMetrics.evaluationMetrics import *
 
 ## Aplicación del algoritmo CLAHE a un dataset,  y guardado de las imágenes mejoradas
 salidas_path = read_folder_path(
-    r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\panel_260W")
+    r"E:\Panel_260W")
 dataset_path = read_folder_path(
-    r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\PVDefectDetect\ImagePreprocessing\Salidas\panel_260W\V44.5_I9.16_t_NoBG")
+    r"E:\Panel_260W\V40_I4.5_t\JPEG")
 
 dataset = read_images(dataset_path)
 
@@ -21,7 +21,7 @@ for i, image in enumerate(dataset):
 
 
 ## Creación de un dataset con las imágenes mejoradas, que se almacena en el directorio `salidas_path/nombre_carpeta`
-nombre_carpeta = "V44.5_I9.16_t_NoBG_CLAHE"
+nombre_carpeta = "V40_I4.5_t_CLAHE"
 os.makedirs(os.path.join(salidas_path, nombre_carpeta), exist_ok=True)
 for i, image in enumerate(dataset_CLAHE):
     cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "imagen"+str(i)+".jpg"), image)
