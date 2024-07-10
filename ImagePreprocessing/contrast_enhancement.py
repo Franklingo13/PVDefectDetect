@@ -84,10 +84,56 @@ def remove_hot_pixels(image):
         La imagen sin pixeles calientes.
     """
     radius=2.0
-    threshold=180
+    threshold=100
     ret, mask = cv2.threshold(image, 180, 255, cv2.THRESH_BINARY)
     image = cv2.inpaint(image, mask, 2, cv2.INPAINT_TELEA)
 
+    return image
+
+# Eliminación de artefactos, empleando algoritmos de imgProcessor
+# Disponible en https://github.com/radjkarl/imgProcessor
+
+def medianThreshold(img, threshold=0.1, size=3, condition='>', copy=True):
+    
+    from scipy.ndimage import median_filter
+    """ Realiza un filtro de mediana y compara los valores de la imagen original con los de la imagen filtrada.
+    Si la diferencia es mayor que el umbral, se reemplaza el valor de la imagen original por el valor de la imagen filtrada.
+    Parámetros:
+    img: Imagen de entrada.
+    threshold: Umbral para la comparación de los valores de la imagen original con los de la imagen filtrada.
+    size: Tamaño de la ventana del filtro de mediana.
+    condition: Condición para la comparación de los valores de la imagen original con los de la imagen filtrada.
+    copy: Booleano que indica si se debe realizar una copia de la imagen original.
+    Devuelve:
+    img: Imagen con los valores reemplazados.
+    indices: Índices de los valores reemplazados.
+    """
+    indices = None
+    if threshold > 0:
+        blur = np.asfarray(median_filter(img, size=size))
+        with np.errstate(divide='ignore', invalid='ignore', over='ignore'):
+
+            if condition == '>':
+                indices = abs((img - blur) / blur) > threshold
+            else:
+                indices = abs((img - blur) / blur) < threshold
+
+        if copy:
+            img = img.copy()
+
+        img[indices] = blur[indices]
+    return img, indices
+
+def correctArtefacts(image, threshold):
+    """ Aplica un umbrak a una imagen para corregir artefactos, reemplazando valores más alla de un umbral
+    Parámetros:
+    image: Imagen de entrada.
+    threshold: Umbral para la comparación de los valores de la imagen original con los de la imagen filtrada.
+    Devuelve:
+    image: Imagen corregida.
+    """
+    image = np.nan_to_num(image)
+    medianThreshold(image, threshold, copy=False)
     return image
 
 def SubtractBG(imageEL, inageBG):
