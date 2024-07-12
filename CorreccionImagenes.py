@@ -11,7 +11,7 @@ from EvaluationMetrics.evaluationMetrics import *
 # Directorio de las imágenes
 path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\Datasets_EL\Policristalino_30W\Poli30W_V24_I2.5_t30\EL"  
 bg_path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\Datasets_EL\Policristalino_30W\Poli30W_V24_I2.5_t30\Fondo"
-out_path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\Datasets_EL\Policristalino_30W\Poli30W_V24_I2.5_t30"
+out_path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\Datasets_EL\Policristalino_30W"
 salidas_path = read_folder_path(out_path)
 dataset_path = read_folder_path(path)
 BG_dataset_path = read_folder_path(bg_path)
