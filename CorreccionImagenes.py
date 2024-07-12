@@ -9,9 +9,9 @@ from EvaluationMetrics.evaluationMetrics import *
 # Aplicar diferentes correcciones a un dataset de imágenes
 
 # Directorio de las imágenes
-path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\Datasets_EL\Policristalino_30W\Poli30W_V24_I2.5_t30\EL"  
-bg_path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\Datasets_EL\Policristalino_30W\Poli30W_V24_I2.5_t30\Fondo"
-out_path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\Datasets_EL\Policristalino_30W"
+path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\Datasets_EL\Policristalino\Poli2_Inf_V40_I4.5_T28\EL"  
+bg_path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\Datasets_EL\Policristalino\Poli2_Inf_V40_I4.5_T28\Fondo"
+out_path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\Datasets_EL\Policristalino"
 salidas_path = read_folder_path(out_path)
 dataset_path = read_folder_path(path)
 BG_dataset_path = read_folder_path(bg_path)
@@ -60,7 +60,7 @@ plt.imshow(mean_image, cmap='gray')
 plt.show()
 
 ## Creación de un dataset con las imágenes mejoradas, que se almacena en el directorio `salidas_path/nombre_carpeta`
-nombre_carpeta = "Mono1_Cracked_ImagenesCorregidas"
+nombre_carpeta = "Poli2_Inf_ImagenesCorregidas"
 os.makedirs(os.path.join(salidas_path, nombre_carpeta), exist_ok=True)
 cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "mean_image.jpg"), mean_image)
 cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "max_image.jpg"), max_image)
