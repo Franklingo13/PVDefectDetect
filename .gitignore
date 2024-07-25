@@ -76,7 +76,10 @@ docs/_build/
 target/
 
 # Jupyter Notebook
-.ipynb_checkpoints
+.ipynb_checkpoints/
+# Ignorar archivos temporales de Jupyter Notebook
+*.pyc
+__pycache__/
 
 # IPython
 profile_default/
