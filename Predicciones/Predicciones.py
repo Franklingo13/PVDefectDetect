@@ -1,38 +1,26 @@
 # Importar librerías
 
 import torch 
-from torch.utils.data import Dataset, DataLoader
-from torchvision import transforms
 from torch.nn import DataParallel
 from torchvision.utils import draw_segmentation_masks
-import torchvision.transforms.functional as F
 import cv2 as cv
 import numpy as np
-import matplotlib.pyplot as plt
-import requests
-import copy
 from unet_model import construct_unet
-from pathlib import Path
-from PIL import Image
 from imutils.paths import list_images
 import os
-import seaborn as sns
 import pandas as pd
 from datetime import datetime
 
 # Importar Model Handler
 from pv_vision.nn import ModelHandler
 
-from pv_vision.crack_analysis.crackcell import CrackCell
 # ignore warnings
 import warnings
 warnings.filterwarnings("ignore")
 # %matplotlib inline    # Para Jupyter Notebookutilizar matplotlib.pyplot.show() en lugar
 
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Image as RLImage, Paragraph, Spacer, tableofcontents
-from reportlab.lib import colors
+from reportlab.platypus import SimpleDocTemplate, Image as RLImage, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_JUSTIFY
 
