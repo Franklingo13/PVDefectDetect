@@ -10,7 +10,8 @@ from imutils.paths import list_images
 import os
 import pandas as pd
 from datetime import datetime
-
+import tkinter as tk
+from tkinter import filedialog, messagebox
 # Importar Model Handler
 from pv_vision.nn import ModelHandler
 
@@ -28,17 +29,90 @@ from Funciones import *
 
 ## Parámetros ##
 
+# # Carpeta de imágenes
+# imgs_path = 'D:/Documentos/Universidad de Cuenca/Trabajo de Titulación/Datasets_EL/CeldasIndividuales/Mono2_V40_I5_t28'
+# images = [cv.imread(file) for file in list_images(imgs_path)]           #imágenes de celdas
+# # Verificar que las imágenes se cargaron correctamente
+# print(f'Número de imágenes: {len(images)}')
+# weight_path = 'D:/Documentos/Universidad de Cuenca/Trabajo de Titulación/Predicciones/PesosGColab/unetv32.pt'
+# out_path='D:/Documentos/Universidad de Cuenca/Trabajo de Titulación/Predicciones/SalidasMonoV4'
+# os.makedirs(f'{out_path}/ann', exist_ok=True)
+# os.makedirs(f'{out_path}/image', exist_ok=True)
+# n_busbar = 2
+# ID_panel = 'Mono2_V40_I5_t28'
+
+def select_folder():
+    folder_selected = filedialog.askdirectory()
+    return folder_selected
+
+def select_file():
+    file_selected = filedialog.askopenfilename()
+    return file_selected
+
+def submit():
+    global imgs_path, weight_path, out_path, n_busbar, ID_panel
+    imgs_path = entry_imgs_path.get()
+    weight_path = entry_weight_path.get()
+    out_path = entry_out_path.get()
+    n_busbar = entry_n_busbar.get()
+    ID_panel = entry_ID_panel.get()
+    
+    # Validar las entradas
+    if not imgs_path or not weight_path or not out_path or not n_busbar or not ID_panel:
+        messagebox.showerror("Error", "Todos los campos son obligatorios")
+        return
+    
+    try:
+        n_busbar = int(n_busbar)
+    except ValueError:
+        messagebox.showerror("Error", "El número de barras colectoras debe ser un número entero")
+        return
+    
+    root.destroy()
+
+root = tk.Tk()
+root.title("Parámetros del Análisis de Imágenes EL")
+
 # Carpeta de imágenes
-imgs_path = 'D:/Documentos/Universidad de Cuenca/Trabajo de Titulación/Datasets_EL/CeldasIndividuales/Mono2_V40_I5_t28'
-images = [cv.imread(file) for file in list_images(imgs_path)]           #imágenes de celdas
+tk.Label(root, text="Carpeta de Imágenes:").grid(row=0, column=0, padx=10, pady=5)
+entry_imgs_path = tk.Entry(root, width=50)
+entry_imgs_path.grid(row=0, column=1, padx=10, pady=5)
+tk.Button(root, text="Seleccionar", command=lambda: entry_imgs_path.insert(0, select_folder())).grid(row=0, column=2, padx=10, pady=5)
+
+# Archivo de pesos del modelo
+tk.Label(root, text="Archivo de Pesos del Modelo:").grid(row=1, column=0, padx=10, pady=5)
+entry_weight_path = tk.Entry(root, width=50)
+entry_weight_path.grid(row=1, column=1, padx=10, pady=5)
+tk.Button(root, text="Seleccionar", command=lambda: entry_weight_path.insert(0, select_file())).grid(row=1, column=2, padx=10, pady=5)
+
+# Carpeta de salida
+tk.Label(root, text="Carpeta de Salida:").grid(row=2, column=0, padx=10, pady=5)
+entry_out_path = tk.Entry(root, width=50)
+entry_out_path.grid(row=2, column=1, padx=10, pady=5)
+tk.Button(root, text="Seleccionar", command=lambda: entry_out_path.insert(0, select_folder())).grid(row=2, column=2, padx=10, pady=5)
+
+# Número de barras colectoras
+tk.Label(root, text="Número de Barras Colectoras:").grid(row=3, column=0, padx=10, pady=5)
+entry_n_busbar = tk.Entry(root, width=50)
+entry_n_busbar.grid(row=3, column=1, padx=10, pady=5)
+
+# ID del panel
+tk.Label(root, text="ID del Panel:").grid(row=4, column=0, padx=10, pady=5)
+entry_ID_panel = tk.Entry(root, width=50)
+entry_ID_panel.grid(row=4, column=1, padx=10, pady=5)
+
+# Botón de enviar
+tk.Button(root, text="Enviar", command=submit).grid(row=5, column=1, padx=10, pady=20)
+
+root.mainloop()
+
 # Verificar que las imágenes se cargaron correctamente
+images = [cv.imread(file) for file in list_images(imgs_path)]
 print(f'Número de imágenes: {len(images)}')
-weight_path = 'D:/Documentos/Universidad de Cuenca/Trabajo de Titulación/Predicciones/PesosGColab/unetv32.pt'
-out_path='D:/Documentos/Universidad de Cuenca/Trabajo de Titulación/Predicciones/SalidasMonoV4'
+
+# Crear las carpetas de salida si no existen
 os.makedirs(f'{out_path}/ann', exist_ok=True)
 os.makedirs(f'{out_path}/image', exist_ok=True)
-n_busbar = 2
-ID_panel = 'Mono2_V40_I5_t28'
 
 ## Cargar modelo ##
 
