@@ -107,12 +107,12 @@ tk.Button(root, text="Enviar", command=submit).grid(row=5, column=1, padx=10, pa
 root.mainloop()
 
 # Verificar que las imágenes se cargaron correctamente
-images = [cv.imread(file) for file in list_images(imgs_path)]
+images = [cv.imread(file) for file in list_images(imgs_path)] # type: ignore
 print(f'Número de imágenes: {len(images)}')
 
 # Crear las carpetas de salida si no existen
-os.makedirs(f'{out_path}/ann', exist_ok=True)
-os.makedirs(f'{out_path}/image', exist_ok=True)
+os.makedirs(f'{out_path}/ann', exist_ok=True)  # type: ignore
+os.makedirs(f'{out_path}/image', exist_ok=True)  # type: ignore
 
 ## Cargar modelo ##
 
@@ -150,7 +150,7 @@ modelhandler = ModelHandler(
     save_name='Unetv32_cell_prediction_val'
 )
 # Cargar los pesos del modelo desde el archivo especificado por 'weight_path'.
-modelhandler.load_model(weight_path)
+modelhandler.load_model(weight_path)  # type: ignore
 
 # Ejecución del modelo en el conjunto de datos.
 # Esto generará predicciones para cada imagen en el conjunto de datos.
@@ -168,8 +168,8 @@ for idx, mask in enumerate(masks_each):
 
     annImage = cv.resize(annImage, (images[idx].shape[1], images[idx].shape[0]), 
                          interpolation=cv.INTER_NEAREST)
-    cv.imwrite(f'{out_path}/ann/annImage{idx}.png', annImage)
-    cv.imwrite(f'{out_path}/image/Image{idx}.png', images[idx])
+    cv.imwrite(f'{out_path}/ann/annImage{idx}.png', annImage)  # type: ignore
+    cv.imwrite(f'{out_path}/image/Image{idx}.png', images[idx])  # type: ignore
 
 # Nombres de las clases
 class_names = ['busbar', 'crack', 'dark']
@@ -181,19 +181,20 @@ panel_prediction_img = combine_panel_predictions(images, masks_each, cols =6)
 
 # Mostrar o guardar la imagen del panel
 #panel_prediction_img.show()  
-panel_prediction_img.save(f'{out_path}/panel_predictions_mono.png')
+panel_prediction_img.save(f'{out_path}/panel_predictions_mono.png')  # type: ignore
 
 # Inicializar una lista para almacenar las estadísticas
 stats = []
 
 # Iterar sobre todas las imágenes y usar CrackCell para extraer las estadísticas
 for idx in range(len(masks_each)):
-    img_path = f'{out_path}/image/Image{idx}.png'
-    ann_path = f'{out_path}/ann/annImage{idx}.png'
+    img_path = f'{out_path}/image/Image{idx}.png'  # type: ignore
+    ann_path = f'{out_path}/ann/annImage{idx}.png'  # type: ignore
 
     # Generar estadísticas de CrackCell
     stats.append(
-        generate_crackcell_stats(img_path, ann_path, busbar_num=n_busbar, crack_inx=100, busbar_inx=10))
+        generate_crackcell_stats(
+            img_path, ann_path, busbar_num=n_busbar, crack_inx=100, busbar_inx=10))  # type: ignore
     
 
 # Convertir la lista de estadísticas en un DataFrame de pandas
@@ -202,19 +203,20 @@ crackcell_stats = pd.DataFrame(stats)
 #print(crackcell_stats)
 area_statistics = generate_area_percentage_statistics(masks_each, class_names)
 
-generate_defect_bar_chart(area_statistics, f'{out_path}/defect_bar_chart.png')
-generate_average_area_bar_chart(area_statistics, f'{out_path}/average_area_bar_chart.png')
-generate_crackcell_stats_bar_chart(crackcell_stats, f'{out_path}/crackcell_stats_bar_chart.png')
+generate_defect_bar_chart(area_statistics, f'{out_path}/defect_bar_chart.png')  # type: ignore
+generate_average_area_bar_chart(area_statistics, f'{out_path}/average_area_bar_chart.png')  # type: ignore
+generate_crackcell_stats_bar_chart(crackcell_stats, f'{out_path}/crackcell_stats_bar_chart.png')    # type: ignore
 # Guardar las estadísticas en un archivo CSV
-save_statistics(area_statistics, f'{out_path}/area_statistics.csv')
-save_statistics(crackcell_stats, f'{out_path}/crackcell_statistics.csv')
+save_statistics(area_statistics, f'{out_path}/area_statistics.csv') # type: ignore
+save_statistics(crackcell_stats, f'{out_path}/crackcell_statistics.csv')    # type: ignore
 
 # Generar y guardar los mapas de calor de las máscaras predichas
-save_heatmap_images(masks_each, out_path)
+save_heatmap_images(masks_each, out_path)   # type: ignore
 
 # Generar la matriz de coocurrencia
 cooccurrence_matrix = generate_cooccurrence_matrix(masks_each, n_classes)
-plot_cooccurrence_matrix(cooccurrence_matrix, class_names, save_path=f'{out_path}/cooccurrence_matrix.png')
+plot_cooccurrence_matrix(
+    cooccurrence_matrix, class_names, save_path=f'{out_path}/cooccurrence_matrix.png')  # type: ignore
 
 ## Introducciones ##
 # Almacena el texto explicativo en variables separadas
@@ -314,7 +316,7 @@ defect_bar_chart_text = (
 ## Crear el reporte ##
 ## Generación del reporte en PDF
 fecha_actual = datetime.now().strftime("%Y%m%d")
-reporte_pdf = f'{out_path}/reporte_analisis_EL_{fecha_actual}_{ID_panel}.pdf'
+reporte_pdf = f'{out_path}/reporte_analisis_EL_{fecha_actual}_{ID_panel}.pdf'   # type: ignore
 
 # Función para generar el reporte en PDF
 def generate_pdf_report():
@@ -337,16 +339,6 @@ def generate_pdf_report():
     # Añadir introducción, explicando el contenido del reporte
     elements.append(Paragraph(intro_text, justified_style))
     elements.append(Spacer(1, 12))
-
-    # # Añadir el índice de contenido
-    # toc = tableofcontents.TableOfContents()
-    # toc.levelStyles = [
-    #     ParagraphStyle(fontName='Helvetica-Bold', fontSize=14, name='Heading1'),
-    #     ParagraphStyle(fontSize=12, name='Heading2')
-    # ]
-    # elements.append(Paragraph("Índice", styles['Title']))
-    # elements.append(toc)
-    # elements.append(Spacer(1, 12))
 
     # Añadir la imagen del panel completo con las predicciones
     elements.append(Paragraph("Panel de Predicciones", styles['Heading2']))
