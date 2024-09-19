@@ -55,6 +55,7 @@ El reporte se guardará en la carpeta de salida especificada.
 - `unet_model.py`: Definición del modelo U-Net.
 - `Funciones.py`: Funciones auxiliares utilizadas en el análisis.
 - `textos_reporte.txt`: Archivo de texto con los textos utilizados en el reporte.
+- `Predicciones.ipynb`: Notebook de Jupyter con el código del script.
 
 ## Ejemplo de Uso
 
