@@ -221,7 +221,14 @@ plot_cooccurrence_matrix(
 
 ## Introducciones ##
 # Leer el archivo de texto y cargar el contenido en un diccionario
-with open('textos_reporte.txt', 'r', encoding='utf-8') as file:
+# Obtener la ruta del directorio actual
+current_dir = os.path.dirname(__file__)
+
+# Construir la ruta completa al archivo de texto
+file_path = os.path.join(current_dir, 'textos_reporte.txt')
+
+# Leer el archivo de texto y cargar el contenido en un diccionario
+with open(file_path, 'r', encoding='utf-8') as file:
     textos_reporte = json.load(file)
 # Acceder a los textos desde el diccionario
 intro_mapas_calor = textos_reporte["intro_mapas_calor"]
