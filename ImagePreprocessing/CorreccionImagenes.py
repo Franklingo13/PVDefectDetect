@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import os
 import matplotlib.pyplot as plt
-from ImagePreprocessing.utils import *
-from ImagePreprocessing.contrast_enhancement import *
+from utils import *
+from contrast_enhancement import *
 
 # Aplicar diferentes correcciones a un dataset de imágenes de EL
 
@@ -100,7 +100,7 @@ def process_images(path, bg_path, out_path, nombre_carpeta):
     cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "min_image.jpg"), min_image)
 
 root = tk.Tk()
-root.title("Parámetros del Análisis de Imágenes EL")
+root.title("Parámetros de la Corrección de Imágenes EL")
 
 # Carpeta de imágenes EL
 tk.Label(root, text="Carpeta de Imágenes EL:").grid(row=0, column=0, padx=10, pady=5)
