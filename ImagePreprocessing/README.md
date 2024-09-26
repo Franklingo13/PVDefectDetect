@@ -17,6 +17,15 @@ Se puede instalar las bibliotecas necesarias utilizando `pip`:
 pip install opencv-python numpy tkinter matplotlib
 ```
 
+## Estructura del Proyecto
+
+- `CorreccionImagenes.py`: Script principal que realiza la corrección de imágenes.
+- `MMCE.ipynb`: Definición del modelo U-Net.
+- `contrast_enhancement.py`: Funciones utilizadas para la corrección de imágenes.
+- `utils.py`: Funciones auxiliares utilizadas.
+- `EvaluacionSubjetiva.ipynb`: Notebook de Jupyter con
+- `el_image_processing.ipynb`: Notebook de Jupyter con 
+
 ## Uso
 
 1. Ejecuta el script `CorreccionImagenes.py`:
