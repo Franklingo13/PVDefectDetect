@@ -98,6 +98,9 @@ def process_images(path, bg_path, out_path, nombre_carpeta):
     cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "mean_image.jpg"), mean_image)
     cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "max_image.jpg"), max_image)
     cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "min_image.jpg"), min_image)
+    cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "imageNoBG_noartefacts_CLAHE.jpg"), datasetNoBG_noartefacts_CLAHE[0])
+    cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "imageNoBG_noartefacts.jpg"), datasetNoBG_noartefacts[0])
+    cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "imageNoBG.jpg"), datasetNoBG[0])
 
 root = tk.Tk()
 root.title("Parámetros del Análisis de Imágenes EL")
