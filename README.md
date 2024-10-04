@@ -111,25 +111,25 @@ Antes de comenzar :checkered_flag:, necesitas tener [Git](https://git-scm.com) y
 
 ```bash
 # Clona este proyecto
-$ git clone https://github.com/{{PVDefectDetect}}/pvdefectdetect
+$ git clone https://github.com/Franklingo13/PVDefectDetect.git
 
 # Accede al directorio del proyecto
 $ cd pvdefectdetect
 
 # Instala las dependencias
-$ pip install -r [requirements.txt](http://_vscodecontentref_/#%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22d%3A%5C%5CDocumentos%5C%5CUniversidad%20de%20Cuenca%5C%5CTrabajo%20de%20Titulaci%C3%B3n%5C%5CPVDefectDetect%5C%5Crequirements.txt%22%2C%22_sep%22%3A1%2C%22path%22%3A%22%2Fd%3A%2FDocumentos%2FUniversidad%20de%20Cuenca%2FTrabajo%20de%20Titulaci%C3%B3n%2FPVDefectDetect%2Frequirements.txt%22%2C%22scheme%22%3A%22file%22%7D%7D)
+$ pip install -r [requirements.txt](https://github.com/Franklingo13/PVDefectDetect/blob/5004d207015b565f90a53b0dcd619b80045bb5bd/requirements.txt)
 
 # Corre un script de ejemplo
-$ python [AnalizarMetricas.py](http://_vscodecontentref_/#%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22d%3A%5C%5CDocumentos%5C%5CUniversidad%20de%20Cuenca%5C%5CTrabajo%20de%20Titulaci%C3%B3n%5C%5CPVDefectDetect%5C%5CAnalizarMetricas.py%22%2C%22_sep%22%3A1%2C%22path%22%3A%22%2Fd%3A%2FDocumentos%2FUniversidad%20de%20Cuenca%2FTrabajo%20de%20Titulaci%C3%B3n%2FPVDefectDetect%2FAnalizarMetricas.py%22%2C%22scheme%22%3A%22file%22%7D%7D)
+$ python AnalizarMetricas.py]()
 ```
 
 ## :memo: License ##
 
-This project is under license from MIT. For more details, see the [LICENSE](https://github.com/Franklingo13/PVDefectDetect/blob/839f48570a84f0ec2ab96b3bccbd602e0f8ebfb5/LICENSE) file.
+Este proyecto está bajo la licencia MIT. Para más detalles, consulta el archivo [LICENSE](https://github.com/Franklingo13/PVDefectDetect/blob/839f48570a84f0ec2ab96b3bccbd602e0f8ebfb5/LICENSE) file.
 
 
-Made with :heart: by <a href="https://github.com/{{Franklingo13}}" target="_blank">{{YOUR_NAME}}</a>
-Hecho con :heart: por [Franklingo13](https://github.com/{{Franklingo13}})
+Made with :heart: by <a href="https://github.com/{{Franklingo13}}" target="_blank">{{YOUR_NAME}}</a>  
+Realizado :heart: por [Franklingo13](https://github.com/Franklingo13)
 
 &#xa0;
 
