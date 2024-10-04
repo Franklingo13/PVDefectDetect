@@ -212,11 +212,11 @@ bar_labels = ['Contrast Original', 'Contrast MMCE', 'Contrast CLAHE', 'Contrast 
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, means_contrast, yerr=[abs(top-bot)/2 for top,bot in cis_contrast], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_contrast[i], 2)), ha='center', va='bottom', fontsize=14)
-ax.set_ylabel('Valor Medio', fontsize=14)
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_contrast[i], 2)), ha='center', va='bottom', fontsize=20)
+ax.set_ylabel('Valor Medio', fontsize=22)
 ax.set_xticks(x_pos)
-ax.set_xticklabels(bar_labels, fontsize=12)
-ax.set_title('Valor medio para el Contrast de cada conjunto de imágenes', fontsize=16)
+ax.set_xticklabels(bar_labels, fontsize=20)
+ax.set_title('Valor medio para el Contrast de cada conjunto de imágenes', fontsize=20)
 ax.yaxis.grid(True)
 plt.tight_layout()
 #plt.show()
@@ -227,11 +227,11 @@ bar_labels = ['CIR MMCE', 'CIR CLAHE', 'CIR HE', 'CIR NoBG', 'CIR NoBG CLAHE', '
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, means_cir, yerr=[abs(top-bot)/2 for top,bot in cis_cir], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_cir[i], 2)), ha='center', va='bottom', fontsize=14)
-ax.set_ylabel('Valor Medio', fontsize=14)
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_cir[i], 2)), ha='center', va='bottom', fontsize=20)
+ax.set_ylabel('Valor Medio', fontsize=22)
 ax.set_xticks(x_pos)
-ax.set_xticklabels(bar_labels, fontsize=12)
-ax.set_title('Valor medio para el CIR de cada conjunto de imágenes', fontsize=16)
+ax.set_xticklabels(bar_labels, fontsize=20)
+ax.set_title('Valor medio para el CIR de cada conjunto de imágenes', fontsize=20)
 ax.yaxis.grid(True)
 plt.tight_layout()
 #plt.show()
@@ -242,11 +242,11 @@ bar_labels = ['PL MMCE', 'PL CLAHE', 'PL HE', 'PL NoBG', 'PL NoBG CLAHE', 'PL No
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, means_pl, yerr=[abs(top-bot)/2 for top,bot in cis_pl], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_pl[i], 2)), ha='center', va='bottom', fontsize=13)
-ax.set_ylabel('Valor Medio', fontsize=14)
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round(means_pl[i], 2)), ha='center', va='bottom', fontsize=20)
+ax.set_ylabel('Valor Medio', fontsize=22)
 ax.set_xticks(x_pos)
-ax.set_xticklabels(bar_labels, fontsize=12)
-ax.set_title('Valor medio para el PL de cada conjunto de imágenes', fontsize=16)
+ax.set_xticklabels(bar_labels, fontsize=20)
+ax.set_title('Valor medio para el PL de cada conjunto de imágenes', fontsize=20)
 ax.yaxis.grid(True)
 plt.tight_layout()
 #plt.show()
@@ -298,15 +298,16 @@ plt.tight_layout()
 
 # Gráfico de barras para los valores de contraste de las imágenes promediadas sin fondo con CLAHE
 fig, ax = plt.subplots()
-bar_labels = ['Contrast Img. Original', 'Contrast Img. Promedio', 'Contrast Img. Máximos', 'Contrast Img. Mínimos']
+bar_labels = ['C Img. Original', 'C Img. Promedio', 'C Img. Máximos', 'C Img. Mínimos']
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, [mean_contrast_original, contrast_meanEL_NoBG_CLAHE, contrast_maxEL_NoBG_CLAHE, contrast_minEL_NoBG_CLAHE], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([mean_contrast_original, contrast_meanEL_NoBG_CLAHE, contrast_maxEL_NoBG_CLAHE, contrast_minEL_NoBG_CLAHE][i], 2)), ha='center', va='bottom', fontsize=14)
-ax.set_ylabel('Contrast', fontsize=14)
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(
+        round([mean_contrast_original, contrast_meanEL_NoBG_CLAHE, contrast_maxEL_NoBG_CLAHE, contrast_minEL_NoBG_CLAHE][i], 2)), ha='center', va='bottom', fontsize=20)
+ax.set_ylabel('Contrast', fontsize=22)
 ax.set_xticks(x_pos)
-ax.set_xticklabels(bar_labels, fontsize=12)
-ax.set_title('Valor de Contrast en las imágenes promediadas sin fondo con CLAHE', fontsize=16)
+ax.set_xticklabels(bar_labels, fontsize=20)
+ax.set_title('Valor de Contrast en las imágenes promediadas sin fondo con CLAHE', fontsize=20)
 ax.yaxis.grid(True)
 plt.tight_layout()
 #plt.show()
@@ -317,11 +318,11 @@ bar_labels = ['CIR Img. Promedio', 'CIR Img. Máximos', 'CIR Img. Mínimos']
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, [cir_meanEL_NoBG_CLAHE, cir_maxEL_NoBG_CLAHE, cir_minEL_NoBG_CLAHE], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([cir_meanEL_NoBG_CLAHE, cir_maxEL_NoBG_CLAHE, cir_minEL_NoBG_CLAHE][i], 2)), ha='center', va='bottom', fontsize=14)
-ax.set_ylabel('CIR', fontsize=14)
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([cir_meanEL_NoBG_CLAHE, cir_maxEL_NoBG_CLAHE, cir_minEL_NoBG_CLAHE][i], 2)), ha='center', va='bottom', fontsize=20)
+ax.set_ylabel('CIR', fontsize=22)
 ax.set_xticks(x_pos)
-ax.set_xticklabels(bar_labels, fontsize=12)
-ax.set_title('Valor de CIR en las imágenes promediadas sin fondo con CLAHE', fontsize=16)
+ax.set_xticklabels(bar_labels, fontsize=20)
+ax.set_title('Valor de CIR en las imágenes promediadas sin fondo con CLAHE', fontsize=20)
 ax.yaxis.grid(True)
 plt.tight_layout()
 #plt.show()
@@ -332,11 +333,11 @@ bar_labels = ['PL Img. Promedio', 'PL Img. Máximos', 'PL Img. Mínimos']
 x_pos = np.arange(len(bar_labels))
 bars = ax.bar(x_pos, [pl_meanEL_NoBG_CLAHE, pl_maxEL_NoBG_CLAHE, pl_minEL_NoBG_CLAHE], align='center', alpha=0.5, ecolor='black', capsize=10)
 for i in range(len(bars)):
-    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([pl_meanEL_NoBG_CLAHE, pl_maxEL_NoBG_CLAHE, pl_minEL_NoBG_CLAHE][i], 2)), ha='center', va='bottom', fontsize=14)
-ax.set_ylabel('PL', fontsize=14)
+    ax.text(bars[i].get_x() + bars[i].get_width(), bars[i].get_height(), str(round([pl_meanEL_NoBG_CLAHE, pl_maxEL_NoBG_CLAHE, pl_minEL_NoBG_CLAHE][i], 2)), ha='center', va='bottom', fontsize=20)
+ax.set_ylabel('PL', fontsize=22)
 ax.set_xticks(x_pos)
-ax.set_xticklabels(bar_labels, fontsize=12)
-ax.set_title('Valor de PL en las imágenes promediadas sin fondo con CLAHE', fontsize=16)
+ax.set_xticklabels(bar_labels, fontsize=20)
+ax.set_title('Valor de PL en las imágenes promediadas sin fondo con CLAHE', fontsize=20)
 ax.yaxis.grid(True)
 plt.tight_layout()
 plt.show()
@@ -346,7 +347,8 @@ plt.show()
 # Tabla resumen con DataFrame de pandas sobre la métrica de contraste
 datasets_contraste = ['Contraste Original', 'Contraste MMCE', 'Contraste CLAHE', 'Contraste HE', 'Contraste NoBG', 'Contraste NoBG CLAHE', 'Contraste NoBG MMCE']
 alphas_contraste = [0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
-cis_contraste = [(ci_contrast_original[1]-ci_contrast_original[0])/2, (ci_contrast_MMCE[1]-ci_contrast_MMCE[0])/2, (ci_contrast_CLAHE[1]-ci_contrast_CLAHE[0])/2, (ci_contrast_HE[1]-ci_contrast_HE[0])/2, (ci_contrast_NoBG[1]-ci_contrast_NoBG[0])/2, (ci_contrast_NoBG_CLAHE[1]-ci_contrast_NoBG_CLAHE[0])/2, (ci_contrast_NoBG_MMCE[1]-ci_contrast_NoBG_MMCE[0])/2]
+cis_contraste = [(ci_contrast_original[1]-ci_contrast_original[0])/2, (
+    ci_contrast_MMCE[1]-ci_contrast_MMCE[0])/2, (ci_contrast_CLAHE[1]-ci_contrast_CLAHE[0])/2, (ci_contrast_HE[1]-ci_contrast_HE[0])/2, (ci_contrast_NoBG[1]-ci_contrast_NoBG[0])/2, (ci_contrast_NoBG_CLAHE[1]-ci_contrast_NoBG_CLAHE[0])/2, (ci_contrast_NoBG_MMCE[1]-ci_contrast_NoBG_MMCE[0])/2]
 # Crear el DataFrame
 df_results_contraste = pd.DataFrame({
     'Conjunto de datos': datasets_contraste,
