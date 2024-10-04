@@ -9,25 +9,25 @@
 <h1 align="center">PVDefectDetect</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/pvdefectdetect?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Franklingo13/PVDefectDetect?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{YOUR_GITHUB_USERNAME}}/pvdefectdetect?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Franklingo13/PVDefectDetect?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{YOUR_GITHUB_USERNAME}}/pvdefectdetect?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Franklingo13/PVDefectDetect?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/{{YOUR_GITHUB_USERNAME}}/pvdefectdetect?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/Franklingo13/PVDefectDetect?color=56BEB8">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/pvdefectdetect?color=56BEB8" /> -->
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/Franklingo13/PVDefectDetect?color=56BEB8" /> -->
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/pvdefectdetect?color=56BEB8" /> -->
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/Franklingo13/PVDefectDetect?color=56BEB8" /> -->
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/pvdefectdetect?color=56BEB8" /> -->
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/Franklingo13/PVDefectDetect?color=56BEB8" /> -->
 </p>
 
 <!-- Status -->
 
 <!-- <h4 align="center"> 
-	🚧  PVDefectDetect 🚀 Under construction...  🚧
+	🚧  PVDefectDetect 🚀 Bajo construcción...  🚧
 </h4> 
 
 <hr> -->
@@ -94,44 +94,42 @@ Se recomienda utilizar la carpeta `module_imgs` para practicar con las herramien
 :heavy_check_mark: Feature 2;\
 :heavy_check_mark: Feature 3;
 
-## :rocket: Technologies ##
+## :rocket: Tecnologías ##
 
-The following tools were used in this project:
+Las siguientes herramientas fueron utilizadas en este proyecto:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- [Python](https://www.python.org/)
+- [Jupyter Notebook](https://jupyter.org/)
+- [OpenCV](https://opencv.org/)
+- [NumPy](https://numpy.org/)
 
-## :white_check_mark: Requirements ##
+## :white_check_mark: Requisitos ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Antes de comenzar :checkered_flag:, necesitas tener [Git](https://git-scm.com) y [Python](https://www.python.org/) instalados.
 
-## :checkered_flag: Starting ##
+## :checkered_flag: Comenzando ##
 
 ```bash
-# Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/pvdefectdetect
+# Clona este proyecto
+$ git clone https://github.com/{{PVDefectDetect}}/pvdefectdetect
 
-# Access
+# Accede al directorio del proyecto
 $ cd pvdefectdetect
 
-# Install dependencies
-$ yarn
+# Instala las dependencias
+$ pip install -r [requirements.txt](http://_vscodecontentref_/#%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22d%3A%5C%5CDocumentos%5C%5CUniversidad%20de%20Cuenca%5C%5CTrabajo%20de%20Titulaci%C3%B3n%5C%5CPVDefectDetect%5C%5Crequirements.txt%22%2C%22_sep%22%3A1%2C%22path%22%3A%22%2Fd%3A%2FDocumentos%2FUniversidad%20de%20Cuenca%2FTrabajo%20de%20Titulaci%C3%B3n%2FPVDefectDetect%2Frequirements.txt%22%2C%22scheme%22%3A%22file%22%7D%7D)
 
-# Run the project
-$ yarn start
-
-# The server will initialize in the <http://localhost:3000>
+# Corre un script de ejemplo
+$ python [AnalizarMetricas.py](http://_vscodecontentref_/#%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22d%3A%5C%5CDocumentos%5C%5CUniversidad%20de%20Cuenca%5C%5CTrabajo%20de%20Titulaci%C3%B3n%5C%5CPVDefectDetect%5C%5CAnalizarMetricas.py%22%2C%22_sep%22%3A1%2C%22path%22%3A%22%2Fd%3A%2FDocumentos%2FUniversidad%20de%20Cuenca%2FTrabajo%20de%20Titulaci%C3%B3n%2FPVDefectDetect%2FAnalizarMetricas.py%22%2C%22scheme%22%3A%22file%22%7D%7D)
 ```
 
 ## :memo: License ##
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
+This project is under license from MIT. For more details, see the [LICENSE](https://github.com/Franklingo13/PVDefectDetect/blob/839f48570a84f0ec2ab96b3bccbd602e0f8ebfb5/LICENSE) file.
 
 
-Made with :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
+Made with :heart: by <a href="https://github.com/{{Franklingo13}}" target="_blank">{{YOUR_NAME}}</a>
+Hecho con :heart: por [Franklingo13](https://github.com/{{Franklingo13}})
 
 &#xa0;
 
