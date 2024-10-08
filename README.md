@@ -120,7 +120,7 @@ $ cd pvdefectdetect
 $ pip install -r requirements.txt
 
 # Corre un script de ejemplo
-$ python AnalizarMetricas.py]()
+$ python AnalizarMetricas.py
 ```
 
 ## :memo: License ##
