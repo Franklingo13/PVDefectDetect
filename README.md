@@ -35,9 +35,9 @@
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Tecnologías</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requisitos</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Comenzando</a> &#xa0; | &#xa0;
+  <a href="#rocket-tecnologías">Tecnologías</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requisitos">Requisitos</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-comenzando">Comenzando</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
   <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
 </p>
