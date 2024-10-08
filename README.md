@@ -127,9 +127,8 @@ $ python AnalizarMetricas.py]()
 
 Este proyecto está bajo la licencia MIT. Para más detalles, consulta el archivo [LICENSE](https://github.com/Franklingo13/PVDefectDetect/blob/839f48570a84f0ec2ab96b3bccbd602e0f8ebfb5/LICENSE) file.
 
-
-Made with :heart: by <a href="https://github.com/{{Franklingo13}}" target="_blank">{{YOUR_NAME}}</a>  
-Realizado :heart: por [Franklingo13](https://github.com/Franklingo13)
+ 
+Realizado por [Franklingo13](https://github.com/Franklingo13)
 
 &#xa0;
 
