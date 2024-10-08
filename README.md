@@ -117,7 +117,7 @@ $ git clone https://github.com/Franklingo13/PVDefectDetect.git
 $ cd pvdefectdetect
 
 # Instala las dependencias
-$ pip install -r [requirements.txt](https://github.com/Franklingo13/PVDefectDetect/blob/5004d207015b565f90a53b0dcd619b80045bb5bd/requirements.txt)
+$ pip install -r requirements.txt
 
 # Corre un script de ejemplo
 $ python AnalizarMetricas.py]()
