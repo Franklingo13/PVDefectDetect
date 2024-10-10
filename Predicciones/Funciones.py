@@ -417,17 +417,19 @@ def generate_average_area_bar_chart(area_statistics, save_path):
     average_areas = area_statistics[['dark [%]', 'crack [%]', 'busbar [%]']].mean()
 
     # Crear un gráfico de barras
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(12, 8))
     ax = sns.barplot(x=average_areas.index, y=average_areas.values, palette='viridis')
 
     # Añadir etiquetas con el valor promedio dentro de cada barra
     for index, value in enumerate(average_areas.values):
-        ax.text(index, value + 0.1, f'{value:.2f}%', ha='center', va='bottom')
+        ax.text(index, value + 0.1, f'{value:.2f}%', ha='center', va='bottom', fontsize=17)
 
     # Títulos y etiquetas
-    plt.title('Área Promedio Ocupada por Cada Clase Predicha')
-    plt.xlabel('Clase')
-    plt.ylabel('Área Promedio [%]')
+    plt.title('Área Promedio Ocupada por Cada Clase Predicha', fontsize=20)
+    plt.xlabel('Clase', fontsize=16)
+    plt.ylabel('Área Promedio [%]', fontsize=16)
+    ax.tick_params(axis='x', labelsize=18)
+    ax.tick_params(axis='y', labelsize=18)
 
     # Guardar la imagen
     plt.savefig(save_path)
