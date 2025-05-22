@@ -1,30 +1,26 @@
 import os
+import cv2
 import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
 from ImagePreprocessing.utils import *
 from ImagePreprocessing.contrast_enhancement import *
 from EvaluationMetrics.evaluationMetrics import *
 
-## Aplicación del algoritmo CLAHE a un dataset,  y guardado de las imágenes mejoradas
-salidas_path = read_folder_path(
-    r"E:\Panel_260W")
-dataset_path = read_folder_path(
-    r"E:\Panel_260W\V40_I4.5_t\JPEG")
+## Aplicación del algoritmo CLAHE a una sola imagen,  y guardado de las imágenes mejoradas
 
-dataset = read_images(dataset_path)
+# Ruta de la imagen a procesar
+image_path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\ImagenesTesis\Articulo\preprocessing_results_Poli\Celdas\poli2_transformed.jpg" 
+salidas_path = r"D:\Documentos\Universidad de Cuenca\Trabajo de Titulación\ImagenesTesis\Articulo\preprocessing_results_Poli\Celdas"
 
-dataset_CLAHE = []
+# Leer la imagen
+image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
-for i, image in enumerate(dataset):
-    dataset_CLAHE.append(CLAHE(image))
+# Aplicar CLAHE
+image_CLAHE = CLAHE(image)
 
+# Guardar la imagen procesada
+os.makedirs(os.path.join(salidas_path), exist_ok=True)
+output_path = os.path.join(salidas_path, "imagen_transformed_CLAHE.jpg")
+cv2.imwrite(output_path, image_CLAHE)
 
-## Creación de un dataset con las imágenes mejoradas, que se almacena en el directorio `salidas_path/nombre_carpeta`
-nombre_carpeta = "V40_I4.5_t_CLAHE"
-os.makedirs(os.path.join(salidas_path, nombre_carpeta), exist_ok=True)
-for i, image in enumerate(dataset_CLAHE):
-    cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "imagen"+str(i)+".jpg"), image)
-print("Imágenes guardadas en: ", nombre_carpeta)
-print("Número de imágenes: ", len(dataset_CLAHE))
+print(f"Imagen procesada y guardada en: {output_path}")
 
