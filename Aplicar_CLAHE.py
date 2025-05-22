@@ -1,6 +1,5 @@
 import os
 import cv2
-import matplotlib.pyplot as plt
 from ImagePreprocessing.utils import *
 from ImagePreprocessing.contrast_enhancement import *
 from EvaluationMetrics.evaluationMetrics import *
