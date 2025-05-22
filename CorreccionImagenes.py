@@ -62,6 +62,14 @@ def process_images(path, bg_path, out_path, nombre_carpeta):
     plt.title("Imagen sin fondo y sin artefactos")
     plt.show()
 
+    # Aplicar el algoritmo get_max_min_mean a las imágenes sin fondo y sin artefactos
+    mean_image_noartefacts, max_image_noartefacts, min_image_noartefacts = get_mean_max_min_image(datasetNoBG_noartefacts)
+    print("mean_image_noartefacts, max_image_noartefacts, min_image_noartefacts calculados")
+    plt.imshow(mean_image_noartefacts, cmap='gray')
+    plt.title("Imagen promedio (sin artefactos, antes de CLAHE)")
+    plt.show()
+
+
     # Aplicar el algoritmo de mejora de contraste (CLAHE) a las imágenes sin fondo
     datasetNoBG_noartefacts_CLAHE = []
     for i in range(len(datasetNoBG_noartefacts)):
@@ -95,6 +103,7 @@ def process_images(path, bg_path, out_path, nombre_carpeta):
     ## Creación de un dataset con las imágenes mejoradas, que se almacena en 
     # el directorio `salidas_path/nombre_carpeta`
     os.makedirs(os.path.join(salidas_path, nombre_carpeta), exist_ok=True)
+    cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "mean_image_noartefacts.jpg"), mean_image_noartefacts)
     cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "mean_image.jpg"), mean_image)
     cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "max_image.jpg"), max_image)
     cv2.imwrite(os.path.join(salidas_path, nombre_carpeta, "min_image.jpg"), min_image)
