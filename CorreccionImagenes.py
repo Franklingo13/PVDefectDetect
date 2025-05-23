@@ -12,6 +12,9 @@ def select_folder():
     return folder_selected
 
 def submit():
+    """
+    Validar las entradas y ejecutar el procesamiento de imágenes.
+    """
     global path, bg_path, out_path, nombre_carpeta
     path = entry_imgs_path.get()
     bg_path = entry_bg_path.get()
@@ -27,6 +30,10 @@ def submit():
     process_images(path, bg_path, out_path, nombre_carpeta)
 
 def process_images(path, bg_path, out_path, nombre_carpeta):
+    """
+    Procesar las imágenes de un dataset, eliminando el fondo y artefactos,
+    y aplicando mejoras de contraste.
+    """
     salidas_path = read_folder_path(out_path)
     dataset_path = read_folder_path(path)
     BG_dataset_path = read_folder_path(bg_path)
