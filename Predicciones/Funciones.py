@@ -197,8 +197,8 @@ def plot_cooccurrence_matrix(cooccurrence_matrix, class_names, save_path=None):
         cbar = heatmap.collections[0].colorbar
         cbar.ax.tick_params(labelsize=14)  # Tamaño de los números en la barra
     
-    plt.xlabel('Clase', fontsize=18)
-    plt.ylabel('Clase', fontsize=18)
+    plt.xlabel('Class', fontsize=18)
+    plt.ylabel('Class', fontsize=18)
     plt.xticks(fontsize=16)
     plt.yticks(fontsize=16)
 
