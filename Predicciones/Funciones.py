@@ -188,13 +188,24 @@ def plot_cooccurrence_matrix(cooccurrence_matrix, class_names, save_path=None):
         Si es None, solo muestra la matriz.
     """
     plt.figure(figsize=(10, 8))
-    sns.heatmap(cooccurrence_matrix, annot=True, fmt="d", cmap='Blues', 
+    heatmap = sns.heatmap(cooccurrence_matrix, annot=True, fmt="d", cmap='Blues', 
                 xticklabels=class_names, yticklabels=class_names, annot_kws={"size": 16})
-    plt.xlabel('Clase')
-    plt.ylabel('Clase')
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    plt.title('Matriz de Coocurrencia', fontsize=18)
+    
+    # Comprobar si existe la barra de color antes de intentar modificarla
+    if hasattr(heatmap.collections[0], 'colorbar') and heatmap.collections[0].colorbar is not None:
+        # Aumentar el tamaño de la fuente de la barra de color
+        cbar = heatmap.collections[0].colorbar
+        cbar.ax.tick_params(labelsize=14)  # Tamaño de los números en la barra
+    
+    plt.xlabel('Clase', fontsize=18)
+    plt.ylabel('Clase', fontsize=18)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
+
+    if not save_path:
+        # No agregar título si se guarda la imagen   
+        plt.title('Matriz de Coocurrencia', fontsize=18)
+    
     plt.tight_layout()
     
     if save_path:
