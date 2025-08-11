@@ -11,7 +11,7 @@
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/Franklingo13/PVDefectDetect?color=56BEB8">
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/Franklingo13/PVDefectDetect?color=56BEB8">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/Franklingo13/PVDefectDetect?color=56BEB8">
-  <img alt="License" src="https://img-shields.io/github/license/Franklingo13/PVDefectDetect?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/Franklingo13/PVDefectDetect?color=56BEB8">
   </p>
 
 <p align="center">
@@ -109,7 +109,7 @@ Aquí te mostramos cómo interactuar con las funcionalidades principales del rep
 
 ## :memo: Licencia
 
-Este proyecto se distribuye bajo la licencia **MIT**. Para más detalles, consulta el archivo [LICENSE](https://www.google.com/search?q=LICENSE).
+Este proyecto se distribuye bajo la licencia **MIT**. Para más detalles, consulta el archivo [LICENSE](LICENSE).
 
 Autor: [Franklingo13](https://github.com/Franklingo13)
 
