@@ -46,89 +46,79 @@
 
 ## :dart: About ##
 
+Proyecto para la detección de defectos en módulos fotovoltaicos a partir de imágenes de electroluminiscencia (EL), combinando preprocesamiento de imágenes y segmentación semántica con redes neuronales (U‑Net y variantes). El flujo cubre: captura, corrección geométrica/óptica, análisis a nivel de celda y evaluación del desempeño del sistema.
 
-Este archivo README proporciona una descripción general de la estructura y el contenido de tu proyecto.
+Resumen del trabajo:
+- Adquisición de imágenes EL (p. ej., con cámara OWL 640 M).
+- Pipeline de preprocesamiento: sustracción de fondo, remoción de artefactos, realce de contraste (CLAHE) y recorte a celdas.
+- Segmentación semántica para detectar fisuras (cracks), barras colectoras (busbars), zonas oscuras (dark) y otros defectos.
+- Evaluación objetiva (métricas, SNR) y subjetiva (visual), incluyendo matrices de confusión, mapas de errores y mapas de probabilidad (softmax).
 
-**Estructura de Carpetas:**
+![Diagrama de Metodología del proyecto](Diagrama_Metodologia.png)
 
-* **checkpoints** (Puestos de Control): Esta carpeta almacena modelos entrenados en diferentes etapas. 
-* **EjemplosPV-vision** (Ejemplos PV-Vision): Contiene archivos de ejemplo para probar los tutoriales de Jupyter Notebook relacionados con la visión artificial para paneles solares (PV-Vision).
-    * **module_imgs** (Imágenes de Módulo): Contiene imágenes originales de electroluminiscencia (EL) de módulos solares provenientes de campo y laboratorio.
-    * **raw_img_gray** (Imágenes Crudas en Escala de Grises):  **(Aclaración necesaria)** Se desconoce el contenido exacto de esta carpeta debido a un Acuerdo de No Divulgación (NDA).
-* **ImagenesXcap** (Imágenes Xcap): Almacena un conjunto de imágenes EL tomadas con una cámara SWIR editadas con XCAP.
-    * **070A_8v**: Probablemente, un identificador específico para este conjunto de imágenes.
-* **Test_crack** (Pruebas de Grietas): Contiene 10 imágenes del conjunto de datos que presentan grietas y fracturas en paneles solares.
-* **Test_ImageJ** (Pruebas de ImageJ): Contiene imágenes EL editadas con el software ImageJ.
-    * **stack_070_edited**: Probablemente, un nombre específico para esta imagen editada.
-* **TestsPV-vision** (Pruebas PV-Vision): Contiene cuadernos Jupyter Notebook para seguir los tutoriales de la librería PV-Vision para el análisis de imágenes de paneles solares.
-    * **checkpoints** (Puestos de Control): Almacena modelos entrenados en diferentes épocas (por ejemplo, `epoch_10`). 
-    * **examples** (Ejemplos): Contiene ejemplos para utilizar las funcionalidades de la librería PV-Vision.
-        * **cell_classification** (Clasificación de Celdas): Contiene imágenes de celdas solares individuales recortadas de módulos completos. Estas celdas se clasifican según las etiquetas manuales proporcionadas en la carpeta `../object_detection/yolo_manual_ann`. 
-        * **crack_segmentation** (Segmentación de Grietas): 
-            * **img_for_crack_analysis** (Imágenes para Análisis de Grietas): **(Aclaración necesaria)** Se desconoce el propósito exacto de esta subcarpeta.
-            * **img_for_prediction** (Imágenes para Predicción): **(Aclaración necesaria)** Se desconoce el propósito exacto de esta subcarpeta.
-            * **img_label_for_training** (Imágenes con Etiquetas para Entrenamiento): Contiene imágenes segmentadas que sirven para entrenar modelos de detección de grietas. 
-                * **testset** (Conjunto de Prueba): 
-                    * **ann** (Anotaciones): Contiene información sobre las grietas presentes en las imágenes de prueba.
-                    * **img** (Imágenes): Contiene las imágenes del conjunto de prueba.
-                * **train** (Conjunto de Entrenamiento): 
-                    * **ann** (Anotaciones): Contiene información sobre las grietas presentes en las imágenes de entrenamiento.
-                    * **img** (Imágenes): Contiene las imágenes del conjunto de entrenamiento.
-                * **val** (Conjunto de Validación): 
-                    * **ann** (Anotaciones): Contiene información sobre las grietas presentes en las imágenes de validación.
-                    * **img** (Imágenes): Contiene las imágenes del conjunto de validación.
-        * **object_detection** (Detección de Objetos): Contiene imágenes de módulos solares transformadas en perspectiva para facilitar la detección de celdas defectuosas. Además, la subcarpeta `yolo_manual_ann` almacena anotaciones manuales que indican la posición de dichas celdas.
-        * **transform_seg** (Segmentación con Transformación): 
-            * **field_pipeline** (Flujo de Campo): Contiene imágenes EL originales de campo en formato RGB o escala de grises. Las anotaciones para la transformación de perspectiva se encuentran en la subcarpeta `unet_ann`. El mapa de colores para transformar imágenes RGB a escala de grises no se incluye debido al NDA.
-            * **module_imgs** (Imágenes de Módulo): Contiene imágenes EL originales provenientes de campo y laboratorio.
+## Características
 
-**Recomendación:**
+- Preprocesamiento de imágenes EL (CLAHE, sustracción de fondo, remoción de artefactos).
+- Corrección y segmentación a nivel de celda; manejo de ROI y comparativas sin deformación.
+- Modelos de segmentación (U‑Net) y notebooks para evaluación y generación de métricas/figuras.
+- Visualizaciones: superposición de máscaras, mapas de error (FP/FN), heatmaps de probabilidad por clase.
 
-Se recomienda utilizar la carpeta `module_imgs` para practicar con las herramientas de transformación de módulos y segmentación de celdas. Los datos de `field_pipeline` se utilizan en tutoriales que manejan un gran número de imágenes de campo.
+## Estructura principal del repositorio
 
+- ImagePreprocessing/
+  - Scripts y notebooks de preprocesado (por ejemplo: `contrast_enhancement.py`, `CorreccionImagenes.py`, `el_image_processing.ipynb`).
+  - `Salidas/` con resultados intermedios (promedios, CLAHE, recortes, etc.).
+- Detección_de_Grietas_y_Pruebas_de_Modelos/
+  - Notebooks y modelos para segmentación (`unet_model.py`, `EvaluacionModelo.ipynb`, `Segmentacion_de_Celdas.ipynb`).
+- Predicciones/
+  - Utilidades de inferencia y visualización (`Funciones.py`, `Predicciones.py`, `Predicciones.ipynb`).
+- EvaluationMetrics/
+  - Cálculo de métricas y visualización (`evaluationMetrics.py`, `EvaluationMetrics.ipynb`).
+- SNR_calc/
+  - Scripts y datos para cálculo/visualización de SNR según IEC.
+- docs/
+  - Documentación complementaria (p. ej., `CorreccionImagenes.md`).
+- Raíz del proyecto
+  - Utilidades y scripts rápidos: `Aplicar_CLAHE.py`, `AplicarMMC.py`, `SubstractBG.py`, `CorreccionImagenes.py`, etc.
 
+## Requisitos
 
-## :sparkles: Features ##
+- Python 3.10+ y pip
+- Recomendado: entorno virtual (venv)
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+Instala dependencias (PowerShell en Windows):
 
-## :rocket: Tecnologías ##
-
-Las siguientes herramientas fueron utilizadas en este proyecto:
-
-- [Python](https://www.python.org/)
-- [Jupyter Notebook](https://jupyter.org/)
-- [OpenCV](https://opencv.org/)
-- [NumPy](https://numpy.org/)
-
-## :white_check_mark: Requisitos ##
-
-Antes de comenzar :checkered_flag:, necesitas tener [Git](https://git-scm.com) y [Python](https://www.python.org/) instalados.
-
-## :checkered_flag: Comenzando ##
-
-```bash
-# Clona este proyecto
-$ git clone https://github.com/Franklingo13/PVDefectDetect.git
-
-# Accede al directorio del proyecto
-$ cd pvdefectdetect
-
-# Instala las dependencias
-$ pip install -r requirements.txt
-
-# Corre un script de ejemplo
-$ python AnalizarMetricas.py
+```powershell
+python -m venv .venv; .\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
 ```
 
-## :memo: License ##
+## Uso rápido
 
-Este proyecto está bajo la licencia MIT. Para más detalles, consulta el archivo [LICENSE](https://github.com/Franklingo13/PVDefectDetect/blob/839f48570a84f0ec2ab96b3bccbd602e0f8ebfb5/LICENSE) file.
+- Preprocesamiento:
+  - `CorreccionImagenes.py` permite seleccionar carpetas de entrada y generar salidas (imágenes promedio pre/post‑CLAHE, max/min, etc.).
+  - Alternativamente, usa los notebooks en `ImagePreprocessing/` para flujos guiados y análisis subjetivo.
 
- 
-Realizado por [Franklingo13](https://github.com/Franklingo13)
+- Entrenamiento y evaluación:
+  - Explora `Detección_de_Grietas_y_Pruebas_de_Modelos/` (p. ej., `EvaluacionModelo.ipynb`).
+  - Genera métricas, matrices de confusión (con exclusión opcional de clases) y mapas de error FP/FN.
+
+- Inferencia y visualización:
+  - `Predicciones/Predicciones.py` o `Predicciones.ipynb` para aplicar el modelo a nuevas imágenes y producir superposiciones y heatmaps de probabilidad (softmax) por clase.
+
+Notas de datos: organiza tus imágenes EL (y, cuando aplique, las de fondo) en carpetas; los scripts/notebooks piden rutas de entrada y una carpeta de salida donde se guardan resultados.
+
+## Tecnologías
+
+- Python, Jupyter Notebook
+- OpenCV, NumPy, Matplotlib/Seaborn
+- PyTorch/Torchvision
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE).
+
+Autor: [Franklingo13](https://github.com/Franklingo13)
 
 &#xa0;
 
